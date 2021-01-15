@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'pages/started_page.dart';
 
 void main() {

@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:easy_hire/model/slide.dart';
-import 'package:easy_hire/pages/login_page.dart';
 import 'package:easy_hire/widgets/slide_dots.dart';
 import 'package:easy_hire/widgets/slide_item.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'signin_page.dart';
+import 'signup_page.dart';
 
 class GettingStartedScreen extends StatefulWidget {
   @override
@@ -19,12 +20,8 @@ class _GettingStartedScreenState extends State<GettingStartedScreen> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 5), (Timer timer) {
-      if (_currentPage < 2) {
-        _currentPage++;
-      } else {
-        _currentPage = 0;
-      }
+    Timer.periodic(Duration(seconds: 3), (Timer timer) {
+      _currentPage = (_currentPage + 1) % slideList.length;
 
       _pageController.animateToPage(
         _currentPage,
@@ -113,7 +110,7 @@ class _GettingStartedScreenState extends State<GettingStartedScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    padding: const EdgeInsets.all(15),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     color: Theme.of(context).primaryColor,
                     onPressed: () {
                       Navigator.push(context,
@@ -139,9 +136,10 @@ class _GettingStartedScreenState extends State<GettingStartedScreen> {
                           width: 2,
                           style: BorderStyle.solid),
                     ),
-                    padding: const EdgeInsets.all(15),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     onPressed: () {
-                      // Navigator.of(context).pushNamed(SignupScreen.routeName);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SignUpPage()));
                     },
                   ),
                 ],
