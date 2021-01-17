@@ -1,7 +1,10 @@
 import 'package:easy_hire/widgets/custom_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pin_put/pin_put.dart';
+
+import 'registration_page.dart';
 
 class VerifyPhonePage extends StatefulWidget {
   final String phoneNumber;
@@ -25,36 +28,43 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
   final FocusNode _pinPutFocusNode = FocusNode();
   final TextEditingController _pinPutController = TextEditingController();
 
-  BoxDecoration get _pinPutDecoration {
+  BoxDecoration _pinPutDecoration(Color color) {
     return BoxDecoration(
-      border: Border.all(color: Colors.deepPurpleAccent),
-      borderRadius: BorderRadius.circular(15.0),
+      // color: Color(0xFFF4F4F4),
+      border: Border(
+        bottom: BorderSide(
+          width: 1,
+          color: color,
+        ),
+      ),
     );
   }
 
-  void _showSnackBar(String pin, BuildContext context) {
-    final snackBar = SnackBar(
-      duration: const Duration(seconds: 3),
-      content: Container(
-        height: 80.0,
-        child: Center(
-          child: Text(
-            'Pin Submitted. Value: $pin',
-            style: const TextStyle(fontSize: 25.0),
-          ),
-        ),
-      ),
-      backgroundColor: Colors.deepPurpleAccent,
+  Widget get pinPutBackgroundField {
+    return Container(
+      decoration: BoxDecoration(
+          color: Color(0xFFF4F4F4), borderRadius: BorderRadius.circular(4)),
+      margin: EdgeInsets.symmetric(horizontal: 12),
+      padding: EdgeInsets.all(8),
+      constraints: BoxConstraints(minHeight: 70.0, minWidth: 60.0),
     );
-    Scaffold.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(snackBar);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Color(0xFF252525),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          )
+        ],
         elevation: 0,
         backgroundColor: Color(0xFFF4F4F4),
         centerTitle: true,
@@ -77,6 +87,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
         ),
       ),
       body: Container(
+        color: Colors.white,
         padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -93,23 +104,43 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                 ),
               ),
             ),
-            Container(
-              child: PinPut(
-                fieldsCount: 5,
-                onSubmit: (String pin) => _showSnackBar(pin, context),
-                focusNode: _pinPutFocusNode,
-                controller: _pinPutController,
-                submittedFieldDecoration: _pinPutDecoration.copyWith(
-                  borderRadius: BorderRadius.circular(20.0),
+            Stack(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    pinPutBackgroundField,
+                    pinPutBackgroundField,
+                    pinPutBackgroundField,
+                    pinPutBackgroundField,
+                  ],
                 ),
-                selectedFieldDecoration: _pinPutDecoration,
-                followingFieldDecoration: _pinPutDecoration.copyWith(
-                  borderRadius: BorderRadius.circular(5.0),
-                  border: Border.all(
-                    color: Colors.deepPurpleAccent.withOpacity(.5),
+                PinPut(
+                  eachFieldMargin: EdgeInsets.symmetric(horizontal: 20),
+                  eachFieldPadding: EdgeInsets.only(top: 10),
+                  eachFieldConstraints:
+                      BoxConstraints(minHeight: 64.0, minWidth: 44.0),
+                  textStyle: GoogleFonts.montserrat(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF252525),
                   ),
+                  eachFieldAlignment: AlignmentGeometry.lerp(
+                      Alignment.center, Alignment.center, 1),
+                  pinAnimationType: PinAnimationType.fade,
+                  // mainAxisSize: MainAxisSize.min,
+                  fieldsAlignment: MainAxisAlignment.center,
+                  fieldsCount: 4,
+                  // onSubmit: (String pin) => _showSnackBar(pin, context),
+                  focusNode: _pinPutFocusNode,
+                  controller: _pinPutController,
+                  submittedFieldDecoration:
+                      _pinPutDecoration(Color(0xFF252525)),
+                  selectedFieldDecoration: _pinPutDecoration(Color(0xFF42B39B)),
+                  followingFieldDecoration:
+                      _pinPutDecoration(Color(0xFFE9E9E9)),
                 ),
-              ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.all(32.0),
@@ -138,7 +169,12 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
             ),
             CustomButton(
               name: "Continue",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegistrationPage()));
+              },
             )
           ],
         ),

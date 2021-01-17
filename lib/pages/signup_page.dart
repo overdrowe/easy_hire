@@ -77,6 +77,8 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+  String phoneNumber = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,6 +136,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               borderSide: BorderSide(color: Colors.white),
                               borderRadius: BorderRadius.circular(5),
                             )),
+                        onChanged: (value){
+                          phoneNumber = value;
+                        },
                       ),
                       SizedBox(
                         height: 32,
@@ -144,7 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => VerifyPhonePage()));
+                                  builder: (context) => VerifyPhonePage(phoneNumber: phoneNumber,)));
                         },
                       ),
                       SizedBox(
