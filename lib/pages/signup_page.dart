@@ -144,7 +144,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         height: 32,
                       ),
                       CustomButton(
-                        name: 'Sign Up',
+                        isActive: false,
+                        title: 'Sign Up',
                         onPressed: (){
                           Navigator.push(
                               context,

@@ -1,3 +1,4 @@
+import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,9 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
   Widget get pinPutBackgroundField {
     return Container(
       decoration: BoxDecoration(
-          color: Color(0xFFF4F4F4), borderRadius: BorderRadius.circular(4)),
+        color: Color(0xFFF4F4F4),
+        borderRadius: BorderRadius.circular(4),
+      ),
       margin: EdgeInsets.symmetric(horizontal: 12),
       padding: EdgeInsets.all(8),
       constraints: BoxConstraints(minHeight: 70.0, minWidth: 60.0),
@@ -53,39 +56,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.close,
-              color: Color(0xFF252525),
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          )
-        ],
-        elevation: 0,
-        backgroundColor: Color(0xFFF4F4F4),
-        centerTitle: true,
-        title: Text(
-          "Verify Phone",
-          style: GoogleFonts.montserrat(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF252525),
-          ),
-        ),
-        leading: FlatButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: Color(0xFF252525),
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
+      appBar: CustomAppBar("Verify Phone"),
       body: Container(
         color: Colors.white,
         padding: EdgeInsets.all(16),
@@ -168,7 +139,8 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
               ),
             ),
             CustomButton(
-              name: "Continue",
+              title: "Continue",
+              isActive: false,
               onPressed: () {
                 Navigator.push(
                     context,

@@ -1,6 +1,9 @@
+import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'account_type_selection_page.dart';
 
 class RegistrationPage extends StatefulWidget {
   @override
@@ -8,6 +11,9 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  bool passUnVisible = true;
+  bool confirmPassUnVisible = true;
+
   Widget textFieldStyle(String hintText) {
     return Container(
       padding: EdgeInsets.only(bottom: 12),
@@ -30,12 +36,26 @@ class _RegistrationPageState extends State<RegistrationPage> {
     );
   }
 
-  Widget passwordTextFieldStyle(String hintText) {
+  Widget passwordTextFieldStyle(String hintText, bool unVisible) {
     return Container(
       padding: EdgeInsets.only(bottom: 12),
       child: TextField(
-        obscureText: true,
+        obscureText: unVisible,
         decoration: InputDecoration(
+            suffixIcon: GestureDetector(
+              child: Icon(
+                unVisible ? Icons.visibility_off_outlined : Icons.visibility_outlined ,
+                color: Color(0xFFB6B7B8),
+              ),
+              onTap: () {
+                setState(() {
+                  if (hintText == "Password")
+                    passUnVisible = !passUnVisible;
+                  else
+                    confirmPassUnVisible = !confirmPassUnVisible;
+                });
+              },
+            ),
             filled: true,
             fillColor: Colors.grey[200],
             hintText: hintText,
@@ -57,39 +77,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: FlatButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: Color(0xFF252525),
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.close,
-              color: Color(0xFF252525),
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          )
-        ],
-        elevation: 0,
-        title: Text(
-          "Registration",
-          style: GoogleFonts.montserrat(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF252525),
-          ),
-        ),
-        backgroundColor: Color(0xFFF4F4F4),
-        centerTitle: true,
-      ),
+      appBar: CustomAppBar("Registration"),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -149,8 +137,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                     ),
                     SizedBox(height: 12),
-                    passwordTextFieldStyle("Password"),
-                    passwordTextFieldStyle("Сonfirm password"),
+                    passwordTextFieldStyle("Password", passUnVisible),
+                    passwordTextFieldStyle("Сonfirm password", confirmPassUnVisible),
                   ],
                 ),
               ),
@@ -187,8 +175,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 ),
                 SizedBox(height: 16),
                 CustomButton(
-                  name: "Next",
-                  onPressed: () {},
+                  isActive: false,
+                  title: "Next",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AccountTypeSelectionPage(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
