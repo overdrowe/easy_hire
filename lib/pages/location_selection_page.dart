@@ -8,6 +8,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:geocoder/geocoder.dart';
+
+// import 'package:geocoding/geocoding.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -24,8 +27,8 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
   Uint8List markerIcon;
   GoogleMapController _controller;
   double zoom = 18;
-  double currentLatitude;
-  double currentLongitude;
+  LatLng currentPosition = LatLng(37.42796133580664, -122.085749655962);
+  String address = "";
 
   @override
   void initState() {
@@ -36,7 +39,7 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
 
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+    zoom: 18,
   );
 
   void updateMarkerAndCircle(double latitude, double longitude) {
@@ -75,26 +78,17 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
             new CameraPosition(
                 target: LatLng(location.latitude, location.longitude),
                 tilt: 0,
-                zoom: zoom)));
+                zoom: 18)));
         updateMarkerAndCircle(location.latitude, location.longitude);
+        Geocoder.local
+            .findAddressesFromCoordinates(
+                new Coordinates(location.latitude, location.longitude))
+            .then((value) => {
+                  super.setState(() {
+                    address = value.first.addressLine;
+                  })
+                });
       }
-
-      // if (_locationSubscription != null) {
-      //   _locationSubscription.cancel();
-      // }
-      //
-      // _locationSubscription =
-      //     _locationTracker.onLocationChanged().listen((newLocalData) {
-      //   if (_controller != null) {
-      //     _controller
-      //         .animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
-      //             // bearing: 192.8334901395799,
-      //             target: LatLng(newLocalData.latitude, newLocalData.longitude),
-      //             tilt: 0,
-      //             zoom: 18.00)));
-      //     updateMarkerAndCircle(newLocalData.latitude, newLocalData.longitude);
-      //   }
-      // });
     } on PlatformException catch (e) {
       if (e.code == 'PERMISSION_DENIED') {
         debugPrint("Permission Denied");
@@ -123,22 +117,30 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
                   mapType: MapType.normal,
                   initialCameraPosition: initialLocation,
                   markers: Set.of((marker != null) ? [marker] : []),
-                  // circles: Set.of((circle != null) ? [circle] : []),
                   onMapCreated: (GoogleMapController controller) {
                     setState(() {
                       controller.setMapStyle(Utils.mapStyle);
                     });
                     _controller = controller;
                   },
+                  onCameraMove: (CameraPosition position) {
+                    currentPosition = position.target;
+                  },
                   onTap: (value) async {
-                    currentLatitude = value.latitude;
-                    currentLongitude = value.longitude;
                     if (_controller != null) {
+                      Geocoder.local
+                          .findAddressesFromCoordinates(
+                              new Coordinates(value.latitude, value.longitude))
+                          .then((value) => {
+                                super.setState(() {
+                                  address = value.first.addressLine;
+                                })
+                              });
                       _controller.animateCamera(CameraUpdate.newCameraPosition(
                           new CameraPosition(
                               target: LatLng(value.latitude, value.longitude),
                               tilt: 0,
-                              zoom: zoom)));
+                              zoom: 18)));
                       updateMarkerAndCircle(value.latitude, value.longitude);
                     }
                   },
@@ -152,13 +154,16 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
                       borderRadius: BorderRadius.all(Radius.circular(4.0)),
                       color: Color(0xFF252525).withOpacity(0.8),
                     ),
-                    child: IconButton(
-                      onPressed: () {
-                        getCurrentLocation();
-                      },
-                      icon: Icon(
-                        Icons.near_me,
-                        color: Colors.white,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: IconButton(
+                        onPressed: () {
+                          getCurrentLocation();
+                        },
+                        icon: Icon(
+                          Icons.near_me,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -171,45 +176,46 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
                       borderRadius: BorderRadius.all(Radius.circular(4.0)),
                       color: Color(0xFF252525).withOpacity(0.8),
                     ),
-                    child: Column(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            zoom++;
-                            if (_controller != null) {
-                              _controller.animateCamera(
-                                  CameraUpdate.newCameraPosition(
-                                      new CameraPosition(
-                                          target: LatLng(currentLatitude,
-                                              currentLongitude),
-                                          tilt: 0,
-                                          zoom: zoom)));
-                            }
-                          },
-                          icon: Icon(
-                            Icons.add,
-                            color: Colors.white,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Column(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              zoom++;
+                              if (_controller != null) {
+                                _controller.animateCamera(
+                                    CameraUpdate.newCameraPosition(
+                                        new CameraPosition(
+                                            target: currentPosition,
+                                            tilt: 0,
+                                            zoom: zoom)));
+                              }
+                            },
+                            icon: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            zoom--;
-                            if (_controller != null) {
-                              _controller.animateCamera(
-                                  CameraUpdate.newCameraPosition(
-                                      new CameraPosition(
-                                          target: LatLng(currentLatitude,
-                                              currentLongitude),
-                                          tilt: 0,
-                                          zoom: zoom)));
-                            }
-                          },
-                          icon: Icon(
-                            Icons.remove,
-                            color: Colors.white,
+                          IconButton(
+                            onPressed: () {
+                              zoom--;
+                              if (_controller != null) {
+                                _controller.animateCamera(
+                                    CameraUpdate.newCameraPosition(
+                                        new CameraPosition(
+                                            target: currentPosition,
+                                            tilt: 0,
+                                            zoom: zoom)));
+                              }
+                            },
+                            icon: Icon(
+                              Icons.remove,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -230,7 +236,7 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
                         color: Color(0xFF252525),
                         fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                Text("1901 Thornridge Cir. Shiloh, Hawaii 81063",
+                Text(address,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.montserrat(
                       fontSize: 13,

@@ -32,6 +32,8 @@ dependencies:
   pinput: ^1.0.0
   google_maps_flutter: ^1.1.1
   location: ^2.3.5
+  geocoder: ^0.2.1
+
 
 dev_dependencies:
   flutter_test:

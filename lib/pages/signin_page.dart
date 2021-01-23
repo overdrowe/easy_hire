@@ -159,6 +159,7 @@ class _LogInPageState extends State<LogInPage> {
                       ),
                       CustomButton(
                         title: 'Log In',
+                        isActive: false,
                         onPressed: () {},
                       ),
                       SizedBox(

@@ -22,7 +22,7 @@ class CustomButton extends StatelessWidget {
         ),
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(6),
       ),
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       color: isActive ? Color(0xFF42B39B) : Color(0xFFB6B7B8),
