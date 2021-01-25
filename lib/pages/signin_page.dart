@@ -2,14 +2,15 @@ import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'main_page.dart';
+
 class LogInPage extends StatefulWidget {
   @override
   _LogInPageState createState() => _LogInPageState();
 }
 
 class _LogInPageState extends State<LogInPage> {
-
-  Widget buttonWithLeadingLogo(String imgLink, String title, Color color){
+  Widget buttonWithLeadingLogo(String imgLink, String title, Color color) {
     return Padding(
       padding: EdgeInsets.only(top: 12),
       child: FlatButton(
@@ -46,7 +47,7 @@ class _LogInPageState extends State<LogInPage> {
     );
   }
 
-  Widget dividerWithText(String text){
+  Widget dividerWithText(String text) {
     return Row(
       children: <Widget>[
         Expanded(
@@ -160,15 +161,21 @@ class _LogInPageState extends State<LogInPage> {
                       CustomButton(
                         title: 'Log In',
                         isActive: false,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => MainPage()));
+                        },
                       ),
                       SizedBox(
                         height: 16,
                       ),
                       dividerWithText("or"),
-                      buttonWithLeadingLogo('assets/images/apple_logo.png','Log In with Apple',Color(0xFF252525)),
-                      buttonWithLeadingLogo('assets/images/google_logo.png','Log In with Google',Color(0xFF252525)),
-                      buttonWithLeadingLogo('assets/images/facebook_logo.png','Log In with Facebook',Color(0xFF537BE1)),
+                      buttonWithLeadingLogo('assets/images/apple_logo.png',
+                          'Log In with Apple', Color(0xFF252525)),
+                      buttonWithLeadingLogo('assets/images/google_logo.png',
+                          'Log In with Google', Color(0xFF252525)),
+                      buttonWithLeadingLogo('assets/images/facebook_logo.png',
+                          'Log In with Facebook', Color(0xFF537BE1)),
                     ],
                   ),
                 ),

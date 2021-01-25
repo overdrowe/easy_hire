@@ -245,7 +245,9 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
                 SizedBox(height: 16),
                 CustomButton(
                   title: "Done",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                   isActive: true,
                 )
               ],

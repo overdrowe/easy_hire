@@ -63,6 +63,9 @@ class _GettingStartedScreenState extends State<GettingStartedScreen> {
                   alignment: AlignmentDirectional.topCenter,
                   children: <Widget>[
                     PageView.builder(
+                      physics: ScrollPhysics(
+                        parent: BouncingScrollPhysics(),
+                      ),
                       scrollDirection: Axis.horizontal,
                       controller: _pageController,
                       onPageChanged: _onPageChanged,

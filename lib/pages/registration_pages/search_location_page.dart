@@ -78,57 +78,68 @@ class _SearchLocationPageState extends State<SearchLocationPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar("location"),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  color: Color(0xFFF4F4F4)),
-              padding: EdgeInsets.all(16),
-              child: Center(
-                child: Column(
-                  children: [
-                    TextField(
-                      style: GoogleFonts.montserrat(
-                        fontSize: 16,
-                        color: Color(0xFF252525),
-                      ),
-                      decoration: InputDecoration(
-                        suffixIcon: Transform.rotate(
-                          angle: pi / 4,
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.add_circle_sharp,
-                              color: Color(0xFF252525).withOpacity(0.7),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          color: Color(0xFFF4F4F4)),
+                      padding: EdgeInsets.all(16),
+                      child: Center(
+                        child: Column(
+                          children: [
+                            TextField(
+                              style: GoogleFonts.montserrat(
+                                fontSize: 16,
+                                color: Color(0xFF252525),
+                              ),
+                              decoration: InputDecoration(
+                                suffixIcon: Transform.rotate(
+                                  angle: pi / 4,
+                                  child: IconButton(
+                                    icon: Icon(
+                                      Icons.add_circle_sharp,
+                                      color: Color(0xFF252525).withOpacity(0.7),
+                                    ),
+                                    onPressed: null,
+                                  ),
+                                ),
+                                border: InputBorder.none,
+                                hintStyle: GoogleFonts.montserrat(
+                                  fontSize: 16,
+                                  color: Color(0xFF252525),
+                                ),
+                                hintText: "Manchester",
+                              ),
+                              onChanged: (value) {},
                             ),
-                            onPressed: null,
-                          ),
+                            suggestedLocationOptions
+                          ],
                         ),
-                        border: InputBorder.none,
-                        hintStyle: GoogleFonts.montserrat(
-                          fontSize: 16,
-                          color: Color(0xFF252525),
-                        ),
-                        hintText: "Manchester",
                       ),
-                      onChanged: (value) {},
                     ),
-                    suggestedLocationOptions
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            CustomButton(
+          ),
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: CustomButton(
               title: "Next",
               isActive: false,
               onPressed: () {},
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

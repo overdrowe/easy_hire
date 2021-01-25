@@ -1,5 +1,6 @@
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
+import 'package:easy_hire/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,28 +14,6 @@ class RegistrationPage extends StatefulWidget {
 class _RegistrationPageState extends State<RegistrationPage> {
   bool passUnVisible = true;
   bool confirmPassUnVisible = true;
-
-  Widget textFieldStyle(String hintText) {
-    return Container(
-      padding: EdgeInsets.only(bottom: 12),
-      child: TextField(
-        decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.grey[200],
-            hintText: hintText,
-            hintStyle: GoogleFonts.montserrat(color: Color(0xFFB6B7B8)),
-            contentPadding: EdgeInsets.all(15),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(5),
-            )),
-      ),
-    );
-  }
 
   Widget passwordTextFieldStyle(String hintText, bool unVisible) {
     return Container(
@@ -57,7 +36,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               },
             ),
             filled: true,
-            fillColor: Colors.grey[200],
+            fillColor: Color(0xFFF4F4F4),
             hintText: hintText,
             hintStyle: GoogleFonts.montserrat(color: Color(0xFFB6B7B8)),
             contentPadding: EdgeInsets.all(15),
@@ -114,8 +93,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                     ),
                     SizedBox(height: 12),
-                    textFieldStyle("First name"),
-                    textFieldStyle("Last name"),
+                    CustomTextField(hintText: "First name"),
+                    CustomTextField(hintText:"Last name"),
                     SizedBox(height: 12),
                     Text(
                       "E-mail",
@@ -126,7 +105,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                     ),
                     SizedBox(height: 12),
-                    textFieldStyle("E-mail"),
+                    CustomTextField(hintText: "E-mail"),
                     SizedBox(height: 12),
                     Text(
                       "Password",

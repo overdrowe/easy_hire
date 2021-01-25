@@ -1,7 +1,7 @@
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'verify_phone_page.dart';
+import 'registration_pages/verify_phone_page.dart';
 
 class SignUpPage extends StatefulWidget {
   @override

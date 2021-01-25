@@ -1,5 +1,6 @@
-import 'package:easy_hire/pages/location_selection_page.dart';
-import 'package:easy_hire/pages/search_location_page.dart';
+import 'file:///B:/FlutterProjects/easy_hire/lib/pages/registration_pages/location_selection_page.dart';
+import 'file:///B:/FlutterProjects/easy_hire/lib/pages/registration_pages/search_location_page.dart';
+import 'package:easy_hire/widgets/address_panel.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,82 +22,6 @@ class _LocationPageState extends State<LocationPage> {
       thickness: 0.5,
       indent: 16,
       endIndent: 16,
-    );
-  }
-
-  Widget get addressPanel {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
-        color: Color(0xFFF4F4F4),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(6),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SearchLocationPage()));
-              },
-              child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                  child: Text("Address",
-                      style: GoogleFonts.montserrat(
-                          fontSize: 16, color: Color(0xFFB6B7B8)))),
-            ),
-          ),
-          customDivider,
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: () {},
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                child: Row(
-                  children: [
-                    Icon(Icons.near_me),
-                    SizedBox(width: 8),
-                    Text("my location",
-                        style: GoogleFonts.montserrat(
-                            fontSize: 16, color: Color(0xFF252525))),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          customDivider,
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(6),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                child: Row(
-                  children: [
-                    Icon(Icons.location_on),
-                    SizedBox(width: 8),
-                    Text("specify on the map",
-                        style: GoogleFonts.montserrat(
-                            fontSize: 16, color: Color(0xFF252525)))
-                  ],
-                ),
-              ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LocationSelectedPage()));
-              },
-            ),
-          )
-        ],
-      ),
     );
   }
 
@@ -170,7 +95,7 @@ class _LocationPageState extends State<LocationPage> {
           children: [
             Column(
               children: [
-                addressPanel,
+                AddressPanel(addressName: "Address",),
                 SizedBox(height: 16),
                 locationHistory,
               ],

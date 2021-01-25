@@ -49,7 +49,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
       ),
       margin: EdgeInsets.symmetric(horizontal: 12),
       padding: EdgeInsets.all(8),
-      constraints: BoxConstraints(minHeight: 70.0, minWidth: 60.0),
+      constraints: BoxConstraints(minHeight: 70.0, minWidth: MediaQuery.of(context).size.width/10 + 16),
     );
   }
 
@@ -90,7 +90,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                   eachFieldMargin: EdgeInsets.symmetric(horizontal: 20),
                   eachFieldPadding: EdgeInsets.only(top: 10),
                   eachFieldConstraints:
-                      BoxConstraints(minHeight: 64.0, minWidth: 44.0),
+                      BoxConstraints(minHeight: 64.0, minWidth: MediaQuery.of(context).size.width/10),
                   textStyle: GoogleFonts.montserrat(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -114,7 +114,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(32.0),
+              padding: EdgeInsets.symmetric(vertical: 24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
