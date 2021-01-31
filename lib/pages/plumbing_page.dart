@@ -188,21 +188,12 @@ class _PlumbingPageState extends State<PlumbingPage> {
       {String text, int value, int groupValue, VoidCallback onTap}) {
     return Padding(
       padding: EdgeInsets.only(top: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(text,
-              style: GoogleFonts.montserrat(
-                fontSize: 17,
-                color: Color(0xFF252525),
-              )),
-          CustomRadio(
-            value: value,
-            groupValue: groupValue,
-            onTap: onTap,
-          )
-        ],
-      ),
+      child: CustomRadio(
+        title: text,
+        value: value,
+        groupValue: groupValue,
+        onTap: onTap,
+      )
     );
   }
 

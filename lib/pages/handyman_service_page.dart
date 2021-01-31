@@ -51,43 +51,25 @@ class _HandymanServicePageState extends State<HandymanServicePage> {
                             letterSpacing: 0.38,
                             fontWeight: FontWeight.bold)),
                     SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Now",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 17,
-                              color: Color(0xFF252525),
-                            )),
-                        CustomRadio(
-                            value: 0,
-                            groupValue: _radioValue,
-                            onTap: () {
-                              setState(() {
-                                _radioValue = 0;
-                              });
-                            })
-                      ],
-                    ),
+                    CustomRadio(
+                        value: 0,
+                        groupValue: _radioValue,
+                        title: "Now",
+                        onTap: () {
+                          setState(() {
+                            _radioValue = 0;
+                          });
+                        }),
                     SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Choose a date",
-                            style: GoogleFonts.montserrat(
-                              fontSize: 17,
-                              color: Color(0xFF252525),
-                            )),
-                        CustomRadio(
-                          value: 1,
-                          groupValue: _radioValue,
-                          onTap: () {
-                            setState(() {
-                              _radioValue = 1;
-                            });
-                          },
-                        )
-                      ],
+                    CustomRadio(
+                      title: "Choose a date",
+                      value: 1,
+                      groupValue: _radioValue,
+                      onTap: () {
+                        setState(() {
+                          _radioValue = 1;
+                        });
+                      },
                     ),
                     SizedBox(height: 8),
                     Row(

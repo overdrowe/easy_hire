@@ -3,8 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SearchTextField extends StatefulWidget {
   final Function(String) onChanged;
+  final VoidCallback onTap;
 
-  const SearchTextField({Key key, this.onChanged}) : super(key: key);
+  const SearchTextField({Key key, this.onChanged, this.onTap}) : super(key: key);
 
   @override
   _SearchTextFieldState createState() => _SearchTextFieldState();
@@ -14,12 +15,14 @@ class _SearchTextFieldState extends State<SearchTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16),
       child: TextField(
         decoration: InputDecoration(
-            prefixIcon: Icon(
-              Icons.search,
-              color: Color(0xFFB6B7B8),
+            prefixIcon: InkWell(
+              onTap: widget.onTap,
+              child: Icon(
+                Icons.search,
+                color: Color(0xFFB6B7B8),
+              ),
             ),
             filled: true,
             fillColor: Colors.white,

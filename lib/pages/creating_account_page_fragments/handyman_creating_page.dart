@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:easy_hire/widgets/custom_button.dart';
+import 'package:easy_hire/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -148,7 +149,6 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF252525)),
           ),
-
           SingleChildScrollView(
             physics: ScrollPhysics(
               parent: BouncingScrollPhysics(),
@@ -234,38 +234,13 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
             ),
           ),
           SizedBox(height: 8),
-          TextField(
-            decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.grey[200],
-                hintText: "Insurance carrier",
-                hintStyle: GoogleFonts.montserrat(color: Color(0xFFB6B7B8)),
-                contentPadding: EdgeInsets.all(15),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(6),
-                )),
+          CustomTextField(
+            hintText: "Insurance carrier",
+            onChanged: (value) {},
           ),
-          SizedBox(height: 8),
-          TextField(
-            decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.grey[200],
-                hintText: "Policy number",
-                hintStyle: GoogleFonts.montserrat(color: Color(0xFFB6B7B8)),
-                contentPadding: EdgeInsets.all(15),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(6),
-                )),
+          CustomTextField(
+            hintText: "Policy number",
+            onChanged: (value) {},
           ),
           Row(
             children: [

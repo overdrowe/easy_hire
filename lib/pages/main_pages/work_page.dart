@@ -1,7 +1,31 @@
+import 'package:easy_hire/models/project.dart';
+import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../project_page.dart';
+
 class WorkPage extends StatelessWidget {
+
+
+  getProjects(BuildContext context) {
+    List<Widget> widgetList = new List();
+
+    for (var value in AccountData().projectsList) {
+      widgetList.add(value.getProjectItem(onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProjectPage(
+              project: value,
+            ),
+          ),
+        );
+      }));
+    }
+    return widgetList;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +42,13 @@ class WorkPage extends StatelessWidget {
           ),
         ),
         backgroundColor: Color(0xFFF4F4F4),
+      ),
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: getProjects(context),
+          ),
+        ),
       ),
     );
   }

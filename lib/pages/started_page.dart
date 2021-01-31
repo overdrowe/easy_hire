@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
-import 'package:easy_hire/model/slide.dart';
+import 'package:easy_hire/models/slide.dart';
 import 'package:easy_hire/widgets/slide_dots.dart';
 import 'package:easy_hire/widgets/slide_item.dart';
 import 'package:flutter/material.dart';

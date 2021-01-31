@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'main_pages/account_page.dart';
+import 'main_pages/help_page.dart';
+import 'main_pages/messages_page.dart';
 import 'main_pages/projects_page.dart';
 import 'main_pages/work_page.dart';
 
@@ -14,9 +16,9 @@ class _MainPageState extends State<MainPage> {
   List<Widget> tabs = [
     ProjectsPage(),
     WorkPage(),
-    WorkPage(),
-    WorkPage(),
-    WorkPage(),
+    MessagesPage(),
+    AccountPage(),
+    HelpPage(),
   ];
 
   @override
@@ -24,6 +26,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         selectedItemColor: Color(0xFF252525),
         unselectedItemColor: Color(0xFFB6B7B8),
         currentIndex: _currentIndex,

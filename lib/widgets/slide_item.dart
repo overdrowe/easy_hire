@@ -1,4 +1,4 @@
-import 'package:easy_hire/model/slide.dart';
+import 'package:easy_hire/models/slide.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
