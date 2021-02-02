@@ -1,21 +1,20 @@
 import 'dart:ui';
 
-import 'package:easy_hire/models/project.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:easy_hire/widgets/SearchTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../filters_page.dart';
-import '../project_page.dart';
-import '../sort_page.dart';
+import '../../filters_page.dart';
+import '../../project_page.dart';
+import '../../sort_page.dart';
 
-class ProjectsPage extends StatefulWidget {
+class ProjectsPageBusiness extends StatefulWidget {
   @override
-  _ProjectsPageState createState() => _ProjectsPageState();
+  _ProjectsPageBusinessState createState() => _ProjectsPageBusinessState();
 }
 
-class _ProjectsPageState extends State<ProjectsPage> {
+class _ProjectsPageBusinessState extends State<ProjectsPageBusiness> {
   bool searchMode = false;
 
   get pageTitle {

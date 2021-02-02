@@ -105,7 +105,7 @@ class _GettingStartedScreenState extends State<GettingStartedScreen> {
                       'Log In',
                       style: GoogleFonts.montserrat(
                         fontSize: 17,
-                        color: Colors.black,
+                        color: Color(0xFF252525),
                         fontWeight: FontWeight.w500,
                         letterSpacing: -0.41,
                       ),

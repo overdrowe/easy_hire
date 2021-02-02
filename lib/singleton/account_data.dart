@@ -1,3 +1,4 @@
+import 'package:easy_hire/models/msg_dialog.dart';
 import 'package:easy_hire/models/project.dart';
 
 class AccountData {
@@ -8,7 +9,24 @@ class AccountData {
     return _singleton;
   }
 
+
+  bool notificationTune = true;
+
   AccountData._internal();
+
+  List<MsgDialog> dialogsList = [
+    MsgDialog(
+      name: "Jack Milton",
+      lastMsg:
+      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis.",
+    ),
+    MsgDialog(
+      name: "Floyd Miles",
+      newMsgCount: 10,
+      lastMsg:
+      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis.",
+    )
+  ];
 
   List<Project> projectsList = [
     Project(
@@ -28,6 +46,12 @@ class AccountData {
         description:
         "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. "
             "Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),
+    Project(
+      title: "Paint the walls",
+    ),
+    Project(
+      title: "Paint the walls",
+    ),
     Project(
       title: "Paint the walls",
     ),

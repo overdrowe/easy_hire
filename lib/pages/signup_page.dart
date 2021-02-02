@@ -63,7 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
             text,
             style: GoogleFonts.montserrat(
               fontSize: 18,
-              color: Colors.black,
+              color: Color(0xFF252525),
             ),
           ),
         ),
@@ -110,7 +110,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 0.36,
-                          color: Colors.black,
+                          color: Color(0xFF252525),
                         ),
                       ),
                     ],

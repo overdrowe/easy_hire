@@ -5,11 +5,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
   final String title;
+  final bool automaticallyImplyActions;
 
-  CustomAppBar(
-    this.title, {
-    Key key,
-  })  : preferredSize = Size.fromHeight(56.0),
+  CustomAppBar(this.title, {
+    Key key, this.automaticallyImplyActions = true,
+  })
+      : preferredSize = Size.fromHeight(56.0),
         super(key: key);
 
   @override
@@ -25,7 +26,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         },
       ),
       actions: [
-        IconButton(
+        automaticallyImplyActions ? IconButton(
           icon: Icon(
             Icons.close,
             color: Color(0xFF252525),
@@ -33,7 +34,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-        )
+        ) : Container()
       ],
       elevation: 0,
       title: Text(

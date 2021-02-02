@@ -1,18 +1,17 @@
+import 'package:easy_hire/app_builder/app_builder.dart';
+import 'package:easy_hire/pages/main_pages/completed_projects_page.dart';
+import 'package:easy_hire/pages/main_pages/main_pages_business/main_page_business.dart';
 import 'package:easy_hire/singleton/account_data.dart';
-import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AccountPage extends StatefulWidget {
+class AccountPagePersonal extends StatefulWidget {
   @override
-  _AccountPageState createState() => _AccountPageState();
+  _AccountPagePersonalState createState() => _AccountPagePersonalState();
 }
 
-class _AccountPageState extends State<AccountPage> {
-  bool notificationTune = true;
-
-
+class _AccountPagePersonalState extends State<AccountPagePersonal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,84 +30,64 @@ class _AccountPageState extends State<AccountPage> {
       ),
       backgroundColor: Colors.white,
       body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 8),
-              settingBtn(
-                title: "Business info",
-                icon: Icons.build,
-                onTap: () {},
-              ),
-              settingBtn(
-                title: "Location",
-                icon: Icons.location_on,
-                trailing: Text(
-                  "8502 Preston Rd. Inglewood...",
-                  style: GoogleFonts.montserrat(
-                    fontSize: 11,
-                    color: Color(0xFFB6B7B8),
-                  ),
-                ),
-                onTap: () {},
-              ),
-              settingBtn(
-                title: "Reviews",
-                icon: Icons.rate_review,
-                trailing: Row(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    Text(
-                      "72",
-                      style: GoogleFonts.montserrat(
-                        fontSize: 15,
-                        color: Color(0xFF42B39B),
-                      ),
+                    SizedBox(height: 8),
+                    settingBtn(
+                      title: "Completed project",
+                      icon: Icons.folder,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => CompletedProjectsPage()));
+                      },
                     ),
-                    Text(
-                      "/3",
-                      style: GoogleFonts.montserrat(
-                        fontSize: 15,
-                        color: Color(0xFF252525),
+                    settingBtn(
+                      title: "Location",
+                      icon: Icons.location_on,
+                      trailing: Text(
+                        "8502 Preston Rd. Inglewood...",
+                        style: GoogleFonts.montserrat(
+                          fontSize: 11,
+                          color: Color(0xFFB6B7B8),
+                        ),
                       ),
-                    )
+                      onTap: () {},
+                    ),
+                    notificationBtn,
+                    settingBtn(
+                      title: "E-mail",
+                      icon: Icons.email,
+                      trailing: Text(
+                        "jackmi...@gmail.com",
+                        style: GoogleFonts.montserrat(
+                          fontSize: 11,
+                          color: Color(0xFFB6B7B8),
+                        ),
+                      ),
+                      onTap: () {},
+                    ),
+                    settingBtn(
+                      title: "Password",
+                      icon: Icons.vpn_key_sharp,
+                      trailing: Text(
+                        "*********",
+                        style: GoogleFonts.montserrat(
+                          fontSize: 11,
+                          color: Color(0xFFB6B7B8),
+                        ),
+                      ),
+                      onTap: () {},
+                    ),
+                    logOutBtn,
                   ],
                 ),
-                onTap: () {},
               ),
-              settingBtn(
-                title: "Completed project",
-                icon: Icons.check,
-                onTap: () {},
-              ),
-              notificationBtn,
-              settingBtn(
-                title: "E-mail",
-                icon: Icons.email,
-                trailing: Text(
-                  "jackmi...@gmail.com",
-                  style: GoogleFonts.montserrat(
-                    fontSize: 11,
-                    color: Color(0xFFB6B7B8),
-                  ),
-                ),
-                onTap: () {},
-              ),
-              settingBtn(
-                title: "Password",
-                icon: Icons.vpn_key_sharp,
-                trailing: Text(
-                  "*********",
-                  style: GoogleFonts.montserrat(
-                    fontSize: 11,
-                    color: Color(0xFFB6B7B8),
-                  ),
-                ),
-                onTap: () {},
-              ),
-              logOutBtn,
-              accountTypeSwitch,
-            ],
-          ),
+            ),
+            accountTypeSwitch,
+          ],
         ),
       ),
     );
@@ -140,7 +119,7 @@ class _AccountPageState extends State<AccountPage> {
 
   get registrationInfo {
     return Text(
-      "Handyman" + "   " + "2 years on Easy Hire",
+      "2 years on Easy Hire",
       style: GoogleFonts.montserrat(
         fontSize: 13,
         color: Color(0xFF252525).withOpacity(0.6),
@@ -155,8 +134,8 @@ class _AccountPageState extends State<AccountPage> {
       child: InkWell(
         customBorder: CircleBorder(),
         child: Container(
-          padding: EdgeInsets.all(12),
-          child: Icon(Icons.edit_outlined),
+          padding: EdgeInsets.all(10),
+          child: Icon(Icons.edit_outlined, size: 20,),
         ),
         onTap: () {},
       ),
@@ -188,10 +167,10 @@ class _AccountPageState extends State<AccountPage> {
               height: 28.0,
               toggleSize: 18.0,
               activeColor: Color(0xFF42B39B),
-              value: notificationTune,
+              value: AccountData().notificationTune,
               onToggle: (val) {
                 setState(() {
-                  notificationTune = val;
+                  AccountData().notificationTune = val;
                 });
               },
             ),
@@ -218,11 +197,7 @@ class _AccountPageState extends State<AccountPage> {
               borderRadius: BorderRadius.circular(6),
               child: InkWell(
                 borderRadius: BorderRadius.circular(6),
-                onTap: () {
-                  setState(() {
-                    AccountData().accountType = AccountType.personal;
-                  });
-                },
+                onTap: () {},
                 child: Container(
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
@@ -233,9 +208,9 @@ class _AccountPageState extends State<AccountPage> {
                     textAlign: TextAlign.center,
                     style: GoogleFonts.montserrat(
                       fontWeight:
-                      AccountData().accountType == AccountType.personal
-                          ? FontWeight.bold
-                          : FontWeight.normal,
+                          AccountData().accountType == AccountType.personal
+                              ? FontWeight.bold
+                              : FontWeight.normal,
                       fontSize: 15,
                       color: Color(0xFF252525),
                     ),
@@ -255,6 +230,11 @@ class _AccountPageState extends State<AccountPage> {
                 onTap: () {
                   setState(() {
                     AccountData().accountType = AccountType.business;
+                    AppBuilder.of(context).rebuild();
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MainPageBusiness(currentIndex: 3)));
                   });
                 },
                 child: Container(
@@ -311,7 +291,7 @@ class _AccountPageState extends State<AccountPage> {
 
   get header {
     return PreferredSize(
-      preferredSize: Size.fromHeight(180.0),
+      preferredSize: Size.fromHeight(104.0),
       child: Container(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -333,10 +313,6 @@ class _AccountPageState extends State<AccountPage> {
                 editButton,
               ],
             ),
-            SizedBox(height: 8),
-            accountButtonStyle(title: "Contractor license - add", onTap: () {}),
-            accountButtonStyle(
-                title: "Liability insurance - not provided", onTap: () {}),
           ],
         ),
       ),
@@ -348,7 +324,7 @@ class _AccountPageState extends State<AccountPage> {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Row(
           children: [
             Icon(
@@ -369,7 +345,7 @@ class _AccountPageState extends State<AccountPage> {
             Icon(
               Icons.arrow_forward_ios,
               size: 17,
-              color: Color(0xFF979797),
+              color: Color(0xFFE9E9E9),
             ),
           ],
         ),

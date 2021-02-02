@@ -2,8 +2,8 @@ import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../creating_account_page_fragments/handyman_creating_page.dart';
-import '../creating_account_page_fragments/licensed_contractor_creating_page.dart';
+import 'creating_account_page_fragments/handyman_creating_page.dart';
+import 'creating_account_page_fragments/licensed_contractor_creating_page.dart';
 
 class CreatingAccountPage extends StatefulWidget {
   @override

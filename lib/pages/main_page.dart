@@ -1,9 +1,9 @@
+
+import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
-import 'main_pages/account_page.dart';
-import 'main_pages/help_page.dart';
-import 'main_pages/messages_page.dart';
-import 'main_pages/projects_page.dart';
-import 'main_pages/work_page.dart';
+
+import 'main_pages/main_pages_business/main_page_business.dart';
+import 'main_pages/main_pages_personal/main_page_personal.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -11,54 +11,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _currentIndex = 0;
-
-  List<Widget> tabs = [
-    ProjectsPage(),
-    WorkPage(),
-    MessagesPage(),
-    AccountPage(),
-    HelpPage(),
-  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Color(0xFF252525),
-        unselectedItemColor: Color(0xFFB6B7B8),
-        currentIndex: _currentIndex,
-        showUnselectedLabels: true,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: "Project",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.build),
-            label: "Work",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.messenger),
-            label: "Messages",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Account",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help),
-            label: "Help",
-          ),
-        ],
-      ),
-    );
+    return AccountData().accountType == AccountType.business ? MainPageBusiness() : MainPagePersonal();
   }
 }

@@ -1,26 +1,19 @@
-import 'package:easy_hire/models/project.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../project_page.dart';
+import '../../project_page.dart';
 
-class WorkPage extends StatelessWidget {
-
-
+class WorkPageBusiness extends StatelessWidget {
   getProjects(BuildContext context) {
     List<Widget> widgetList = new List();
 
     for (var value in AccountData().projectsList) {
       widgetList.add(value.getProjectItem(onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProjectPage(
-              project: value,
-            ),
-          ),
-        );
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProjectPage(project: value)));
       }));
     }
     return widgetList;

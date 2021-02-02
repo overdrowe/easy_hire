@@ -64,7 +64,7 @@ class _LogInPageState extends State<LogInPage> {
             text,
             style: GoogleFonts.montserrat(
               fontSize: 18,
-              color: Colors.black,
+              color: Color(0xFF252525),
             ),
           ),
         ),
@@ -109,7 +109,7 @@ class _LogInPageState extends State<LogInPage> {
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 0.36,
-                          color: Colors.black,
+                          color: Color(0xFF252525),
                         ),
                       ),
                     ],

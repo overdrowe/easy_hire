@@ -1,37 +1,26 @@
 import 'package:easy_hire/models/msg_dialog.dart';
 import 'package:easy_hire/pages/dialog_page.dart';
+import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MessagesPage extends StatefulWidget {
+class MessagesPageBusiness extends StatefulWidget {
   @override
-  _MessagesPageState createState() => _MessagesPageState();
+  _MessagesPageBusinessState createState() => _MessagesPageBusinessState();
 }
 
-class _MessagesPageState extends State<MessagesPage> {
-  List<MsgDialog> dialogsList = [
-    MsgDialog(
-      name: "Jack Milton",
-      lastMsg:
-          "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis.",
-    ),
-    MsgDialog(
-      name: "Floyd Miles",
-      lastMsg:
-          "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis.",
-    )
-  ];
+class _MessagesPageBusinessState extends State<MessagesPageBusiness> {
 
   get openProjectsMessages {
     return Container(
       child: ListView.builder(
-          itemCount: dialogsList.length,
+          itemCount: AccountData().dialogsList.length,
           itemBuilder: (context, index) {
-            return dialogsList[index].getDialogItem(
+            return AccountData().dialogsList[index].getDialogItem(
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => DialogPage(
-                      dialogInfo: dialogsList[index],
+                      dialogInfo: AccountData().dialogsList[index],
                     )));
               },
             );
@@ -42,13 +31,13 @@ class _MessagesPageState extends State<MessagesPage> {
   get inWorkMessages {
     return Container(
       child: ListView.builder(
-          itemCount: dialogsList.length,
+          itemCount: AccountData().dialogsList.length,
           itemBuilder: (context, index) {
-            return dialogsList[index].getDialogItem(
+            return AccountData().dialogsList[index].getDialogItem(
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => DialogPage(
-                      dialogInfo: dialogsList[index],
+                      dialogInfo: AccountData().dialogsList[index],
                     )));
               },
             );
