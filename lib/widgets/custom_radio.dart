@@ -1,3 +1,4 @@
+import 'package:easy_hire/app_style/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -34,12 +35,12 @@ class _CustomRadioState extends State<CustomRadio> {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: widget.groupValue == widget.value
-                      ? Color(0xFF42B39B)
+                      ? AppStyle().mainColor
                       : Colors.white,
                   border: Border.all(
                     width: 2,
                     color: widget.groupValue == widget.value
-                        ? Color(0xFF42B39B)
+                        ? AppStyle().mainColor
                         : Color(0xFFB6B7B8),
                   )),
               child: Center(

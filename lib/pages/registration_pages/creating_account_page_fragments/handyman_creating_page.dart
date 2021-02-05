@@ -1,13 +1,15 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:easy_hire/app_style/app_style.dart';
+import 'package:easy_hire/pages/main_pages/business_pages/main_page_business.dart';
+import 'package:easy_hire/pages/main_pages/personal_pages/home_page_personal.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../handyman_service_page.dart';
 
 class HandymanCreatingPage extends StatefulWidget {
   @override
@@ -78,10 +80,10 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
                 title: "Create an account",
                 isActive: confirmCheckBoxValue,
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => HandymanServicePage()));
+                      MaterialPageRoute(builder: (context) => MainPageBusiness()),
+                          (Route<dynamic> route) => false);
                 },
               ),
               SizedBox(
@@ -115,7 +117,7 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
                   style: GoogleFonts.montserrat(
                       fontSize: 16, color: Color(0xFFB6B7B8)),
                 ),
-                Icon(Icons.arrow_forward_ios_rounded,
+                Icon(Icons.arrow_forward_ios,
                     size: 16, color: Color(0xFFB6B7B8))
               ],
             ),
@@ -248,7 +250,7 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
                 margin: EdgeInsets.symmetric(vertical: 8),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
-                    color: Color(0xFF42B39B)),
+                    color: AppStyle().mainColor),
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
@@ -282,7 +284,7 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
           width: 24,
           decoration: value
               ? BoxDecoration(
-                  color: Color(0xFF42B39B),
+                  color: AppStyle().mainColor,
                   borderRadius: BorderRadius.circular(4))
               : BoxDecoration(
                   color: Colors.transparent,
@@ -304,7 +306,7 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
           checkBoxDecoration(onTap, value),
           SizedBox(width: 16),
           Text(
-            "All information is true and up to date",
+            text,
             style: GoogleFonts.montserrat(
               fontSize: 12,
               color: Color(0xFF252525),

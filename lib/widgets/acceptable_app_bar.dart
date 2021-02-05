@@ -1,3 +1,4 @@
+import 'package:easy_hire/app_style/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,7 +30,7 @@ class AcceptableAppBar extends StatelessWidget with PreferredSizeWidget {
         IconButton(
           icon: Icon(
             Icons.check,
-            color: Color(0xFF42B39B),
+            color: AppStyle().mainColor,
           ),
           onPressed: onConfirm,
         )

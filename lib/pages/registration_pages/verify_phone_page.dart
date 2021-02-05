@@ -1,3 +1,4 @@
+import 'package:easy_hire/app_style/app_style.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -107,7 +108,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                   controller: _pinPutController,
                   submittedFieldDecoration:
                       _pinPutDecoration(Color(0xFF252525)),
-                  selectedFieldDecoration: _pinPutDecoration(Color(0xFF42B39B)),
+                  selectedFieldDecoration: _pinPutDecoration(AppStyle().mainColor),
                   followingFieldDecoration:
                       _pinPutDecoration(Color(0xFFE9E9E9)),
                 ),

@@ -2,7 +2,7 @@ import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../project_page.dart';
+import 'project_page_business.dart';
 
 class WorkPageBusiness extends StatelessWidget {
   getProjects(BuildContext context) {
@@ -13,7 +13,7 @@ class WorkPageBusiness extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProjectPage(project: value)));
+                builder: (context) => ProjectPageBusiness(project: value)));
       }));
     }
     return widgetList;

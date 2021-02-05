@@ -1,3 +1,5 @@
+import 'package:easy_hire/pages/main_pages/personal_pages/main_page_personal.dart';
+import 'package:easy_hire/singleton/account_data.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -33,10 +35,11 @@ class AccountTypeSelectionPage extends StatelessWidget {
                     isActive: true,
                     title: "Personal",
                     onPressed: () {
-                      Navigator.push(
+                      AccountData().accountType = AccountType.personal;
+                      Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => LocationPage()));
+                          MaterialPageRoute(builder: (context) => MainPagePersonal()),
+                              (Route<dynamic> route) => false);
                     },
                   ),
                   SizedBox(height: 16),
@@ -51,8 +54,9 @@ class AccountTypeSelectionPage extends StatelessWidget {
                   SizedBox(height: 8),
                   CustomButton(
                     isActive: true,
-                    title: "Bisiness",
+                    title: "Business",
                     onPressed: () {
+                      AccountData().accountType = AccountType.business;
                       Navigator.push(
                           context,
                           MaterialPageRoute(

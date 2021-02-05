@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:easy_hire/models/slide.dart';
+import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:easy_hire/widgets/slide_dots.dart';
 import 'package:easy_hire/widgets/slide_item.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +9,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'signin_page.dart';
 import 'signup_page.dart';
 
-class GettingStartedScreen extends StatefulWidget {
+class StartedPage extends StatefulWidget {
   @override
-  _GettingStartedScreenState createState() => _GettingStartedScreenState();
+  _StartedPageState createState() => _StartedPageState();
 }
 
-class _GettingStartedScreenState extends State<GettingStartedScreen> {
+class _StartedPageState extends State<StartedPage> {
   int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
@@ -100,22 +101,10 @@ class _GettingStartedScreenState extends State<GettingStartedScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  FlatButton(
-                    child: Text(
-                      'Log In',
-                      style: GoogleFonts.montserrat(
-                        fontSize: 17,
-                        color: Color(0xFF252525),
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: -0.41,
-                      ),
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                    color: Theme.of(context).primaryColor,
-                    onPressed: () {
+                  CustomButton(
+                    title: 'Log In',
+                    isActive: true,
+                    onPressed: (){
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => LogInPage()));
                     },

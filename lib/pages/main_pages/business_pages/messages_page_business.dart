@@ -1,8 +1,10 @@
-import 'package:easy_hire/models/msg_dialog.dart';
-import 'package:easy_hire/pages/dialog_page.dart';
+
+import 'package:easy_hire/app_style/app_style.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'dialog_page_business.dart';
 
 class MessagesPageBusiness extends StatefulWidget {
   @override
@@ -19,7 +21,7 @@ class _MessagesPageBusinessState extends State<MessagesPageBusiness> {
             return AccountData().dialogsList[index].getDialogItem(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DialogPage(
+                    MaterialPageRoute(builder: (context) => DialogPageBusiness(
                       dialogInfo: AccountData().dialogsList[index],
                     )));
               },
@@ -36,7 +38,7 @@ class _MessagesPageBusinessState extends State<MessagesPageBusiness> {
             return AccountData().dialogsList[index].getDialogItem(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DialogPage(
+                    MaterialPageRoute(builder: (context) => DialogPageBusiness(
                       dialogInfo: AccountData().dialogsList[index],
                     )));
               },
@@ -94,7 +96,7 @@ class _MessagesPageBusinessState extends State<MessagesPageBusiness> {
                           ),
                           indicator: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
-                              color: Color(0xFF42B39B)),
+                              color: AppStyle().mainColor),
                           tabs: [
                             Tab(
                               child: Align(

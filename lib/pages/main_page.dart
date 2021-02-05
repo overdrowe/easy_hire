@@ -2,8 +2,8 @@
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
 
-import 'main_pages/main_pages_business/main_page_business.dart';
-import 'main_pages/main_pages_personal/main_page_personal.dart';
+import 'main_pages/business_pages/main_page_business.dart';
+import 'main_pages/personal_pages/main_page_personal.dart';
 
 class MainPage extends StatefulWidget {
   @override

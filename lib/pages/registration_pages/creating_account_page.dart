@@ -1,3 +1,4 @@
+import 'package:easy_hire/app_style/app_style.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,7 +53,7 @@ class _CreatingAccountPageState extends State<CreatingAccountPage> {
                                 ),
                                 indicator: BoxDecoration(
                                     borderRadius: BorderRadius.circular(6),
-                                    color: Color(0xFF42B39B)),
+                                    color: AppStyle().mainColor),
                                 tabs: [
                                   Tab(
                                     child: Align(
@@ -75,10 +76,6 @@ class _CreatingAccountPageState extends State<CreatingAccountPage> {
                             parent: BouncingScrollPhysics(),
                           ),
                           children: [
-                            // SizedBox(height: 100,
-                            //   child: ColoredBox(color: Colors.red,),),
-                            // SizedBox(height: 100,
-                            //   child: ColoredBox(color: Colors.red,),)
                             LicensedContractorCreatingPage(),
                             HandymanCreatingPage(),
                           ]),

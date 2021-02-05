@@ -1,8 +1,8 @@
+import 'package:easy_hire/pages/main_pages/personal_pages/project_page_personal.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../project_page.dart';
 
 class WorkPagePersonal extends StatelessWidget {
   @override
@@ -41,7 +41,7 @@ class WorkPagePersonal extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProjectPage(project: value)));
+                builder: (context) => ProjectPagePersonal(value)));
       }));
     }
     return widgetList;

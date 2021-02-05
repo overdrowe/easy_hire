@@ -1,93 +1,132 @@
 import 'package:easy_hire/app_builder/app_builder.dart';
-import 'package:easy_hire/pages/main_pages/completed_projects_page.dart';
-import 'package:easy_hire/pages/main_pages/main_pages_business/main_page_business.dart';
+import 'package:easy_hire/app_style/app_style.dart';
+import 'package:easy_hire/pages/main_pages/edit_user_name_page.dart';
+import 'package:easy_hire/pages/main_pages/personal_pages/main_page_personal.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AccountPagePersonal extends StatefulWidget {
+import '../enter_current_password_page.dart';
+
+class AccountPageBusiness extends StatefulWidget {
   @override
-  _AccountPagePersonalState createState() => _AccountPagePersonalState();
+  _AccountPageBusinessState createState() => _AccountPageBusinessState();
 }
 
-class _AccountPagePersonalState extends State<AccountPagePersonal> {
+class _AccountPageBusinessState extends State<AccountPageBusiness> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Color(0xFFE9E9E9),
-        automaticallyImplyLeading: false,
-        title: Text(
-          "Account",
-          style: GoogleFonts.montserrat(
-              fontSize: 21,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF252525)),
+    return Hero(
+      tag: "accountPage",
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Color(0xFFE9E9E9),
+          automaticallyImplyLeading: false,
+          title: Text(
+            "Account",
+            style: GoogleFonts.montserrat(
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF252525)),
+          ),
+          bottom: header,
         ),
-        bottom: header,
-      ),
-      backgroundColor: Colors.white,
-      body: Container(
-        child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(height: 8),
-                    settingBtn(
-                      title: "Completed project",
-                      icon: Icons.folder,
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => CompletedProjectsPage()));
-                      },
-                    ),
-                    settingBtn(
-                      title: "Location",
-                      icon: Icons.location_on,
-                      trailing: Text(
-                        "8502 Preston Rd. Inglewood...",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 11,
-                          color: Color(0xFFB6B7B8),
-                        ),
+        backgroundColor: Colors.white,
+        body: Container(
+          child: Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 8),
+                      settingBtn(
+                        title: "Business info",
+                        src: 'assets/icons/work.svg',
+                        onTap: () {},
                       ),
-                      onTap: () {},
-                    ),
-                    notificationBtn,
-                    settingBtn(
-                      title: "E-mail",
-                      icon: Icons.email,
-                      trailing: Text(
-                        "jackmi...@gmail.com",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 11,
-                          color: Color(0xFFB6B7B8),
+                      settingBtn(
+                        title: "Location",
+                        src: 'assets/icons/location.svg',
+                        trailing: Text(
+                          "8502 Preston Rd. Inglewood...",
+                          style: GoogleFonts.montserrat(
+                            fontSize: 11,
+                            color: Color(0xFFB6B7B8),
+                          ),
                         ),
+                        onTap: () {},
                       ),
-                      onTap: () {},
-                    ),
-                    settingBtn(
-                      title: "Password",
-                      icon: Icons.vpn_key_sharp,
-                      trailing: Text(
-                        "*********",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 11,
-                          color: Color(0xFFB6B7B8),
+                      settingBtn(
+                        title: "Reviews",
+                        src: 'assets/icons/reviews.svg',
+                        trailing: Row(
+                          children: [
+                            Text(
+                              "72",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 15,
+                                color: AppStyle().mainColor,
+                              ),
+                            ),
+                            Text(
+                              "/3",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 15,
+                                color: Color(0xFF252525),
+                              ),
+                            )
+                          ],
                         ),
+                        onTap: () {},
                       ),
-                      onTap: () {},
-                    ),
-                    logOutBtn,
-                  ],
+                      settingBtn(
+                        title: "Completed project",
+                        src: 'assets/icons/archive.svg',
+                        onTap: () {},
+                      ),
+                      notificationBtn,
+                      settingBtn(
+                        title: "E-mail",
+                        src: 'assets/icons/mail.svg',
+                        trailing: Text(
+                          "jackmi...@gmail.com",
+                          style: GoogleFonts.montserrat(
+                            fontSize: 11,
+                            color: Color(0xFFB6B7B8),
+                          ),
+                        ),
+                        onTap: () {},
+                      ),
+                      settingBtn(
+                        title: "Password",
+                        src: 'assets/icons/password.svg',
+                        trailing: Text(
+                          "*********",
+                          style: GoogleFonts.montserrat(
+                            fontSize: 11,
+                            color: Color(0xFFB6B7B8),
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      EnterCurrentPasswordPage()));
+                        },
+                      ),
+                      logOutBtn,
+                    ],
+                  ),
                 ),
               ),
-            ),
-            accountTypeSwitch,
-          ],
+              accountTypeSwitch
+            ],
+          ),
         ),
       ),
     );
@@ -119,7 +158,7 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
 
   get registrationInfo {
     return Text(
-      "2 years on Easy Hire",
+      "Handyman" + "   " + "2 years on Easy Hire",
       style: GoogleFonts.montserrat(
         fontSize: 13,
         color: Color(0xFF252525).withOpacity(0.6),
@@ -135,9 +174,15 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
         customBorder: CircleBorder(),
         child: Container(
           padding: EdgeInsets.all(10),
-          child: Icon(Icons.edit_outlined, size: 20,),
+          child: Icon(
+            Icons.edit_outlined,
+            size: 20,
+          ),
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => EditUserNamePage()));
+        },
       ),
     );
   }
@@ -149,8 +194,8 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
         padding: EdgeInsets.all(16),
         child: Row(
           children: [
-            Icon(
-              Icons.notifications_sharp,
+            SvgPicture.asset(
+              'assets/icons/notification.svg',
               color: Color(0xFF252525),
             ),
             SizedBox(width: 24),
@@ -166,7 +211,7 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
               width: 55.0,
               height: 28.0,
               toggleSize: 18.0,
-              activeColor: Color(0xFF42B39B),
+              activeColor: AppStyle().mainColor,
               value: AccountData().notificationTune,
               onToggle: (val) {
                 setState(() {
@@ -192,12 +237,22 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
           Expanded(
             child: Material(
               color: AccountData().accountType == AccountType.personal
-                  ? Color(0xFF42B39B)
+                  ? AppStyle().mainColor
                   : Color(0xFFF4F4F4),
               borderRadius: BorderRadius.circular(6),
               child: InkWell(
                 borderRadius: BorderRadius.circular(6),
-                onTap: () {},
+                onTap: () {
+                  setState(() {
+                    AccountData().accountType = AccountType.personal;
+                    AppBuilder.of(context).rebuild();
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                MainPagePersonal(currentIndex: 3)));
+                  });
+                },
                 child: Container(
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
@@ -222,21 +277,12 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
           Expanded(
             child: Material(
               color: AccountData().accountType == AccountType.business
-                  ? Color(0xFF42B39B)
+                  ? AppStyle().mainColor
                   : Color(0xFFF4F4F4),
               borderRadius: BorderRadius.circular(6),
               child: InkWell(
                 borderRadius: BorderRadius.circular(6),
-                onTap: () {
-                  setState(() {
-                    AccountData().accountType = AccountType.business;
-                    AppBuilder.of(context).rebuild();
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MainPageBusiness(currentIndex: 3)));
-                  });
-                },
+                onTap: () {},
                 child: Container(
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
@@ -291,9 +337,9 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
 
   get header {
     return PreferredSize(
-      preferredSize: Size.fromHeight(104.0),
+      preferredSize: Size.fromHeight(200.0),
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -301,6 +347,7 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 avatar,
+                SizedBox(width: 8),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -313,22 +360,25 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
                 editButton,
               ],
             ),
+            SizedBox(height: 8),
+            accountButtonStyle(title: "Contractor license - add", onTap: () {}),
+            accountButtonStyle(
+                title: "Liability insurance - not provided", onTap: () {}),
           ],
         ),
       ),
     );
   }
 
-  settingBtn(
-      {IconData icon, String title, VoidCallback onTap, Widget trailing}) {
+  settingBtn({String src, String title, VoidCallback onTap, Widget trailing}) {
     return InkWell(
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Row(
           children: [
-            Icon(
-              icon,
+            SvgPicture.asset(
+              src,
               color: Color(0xFF252525),
             ),
             SizedBox(width: 24),
@@ -360,8 +410,8 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
         padding: EdgeInsets.all(16),
         child: Row(
           children: [
-            Icon(
-              Icons.logout,
+            SvgPicture.asset(
+              'assets/icons/exit.svg',
               color: Color(0xFFE14949),
             ),
             SizedBox(width: 24),

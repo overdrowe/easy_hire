@@ -1,13 +1,14 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:easy_hire/app_style/app_style.dart';
+import 'package:easy_hire/pages/main_pages/business_pages/main_page_business.dart';
+import 'package:easy_hire/pages/main_pages/personal_pages/home_page_personal.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../handyman_service_page.dart';
 
 
 class LicensedContractorCreatingPage extends StatefulWidget {
@@ -51,7 +52,7 @@ class _LicensedContractorCreatingPageState
                   style: GoogleFonts.montserrat(
                       fontSize: 16, color: Color(0xFFB6B7B8)),
                 ),
-                Icon(Icons.arrow_forward_ios_rounded,
+                Icon(Icons.arrow_forward_ios,
                     size: 16, color: Color(0xFFB6B7B8))
               ],
             ),
@@ -192,7 +193,7 @@ class _LicensedContractorCreatingPageState
           width: 24,
           decoration: checkBoxValue
               ? BoxDecoration(
-                  color: Color(0xFF42B39B),
+                  color: AppStyle().mainColor,
                   borderRadius: BorderRadius.circular(4))
               : BoxDecoration(
                   color: Colors.transparent,
@@ -263,10 +264,10 @@ class _LicensedContractorCreatingPageState
                 title: "Create an account",
                 isActive: true,
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => HandymanServicePage()));
+                      MaterialPageRoute(builder: (context) => MainPageBusiness()),
+                          (Route<dynamic> route) => false);
                 },
               ),
               SizedBox(

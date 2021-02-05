@@ -4,13 +4,11 @@ import 'dart:ui';
 import 'package:easy_hire/map_style/google_map_style.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:geocoder/geocoder.dart';
 
-// import 'package:geocoding/geocoding.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -33,7 +31,7 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
   @override
   void initState() {
     super.initState();
-    getBytesFromAsset('assets/images/map_marker.png', 200)
+    getBytesFromAsset('assets/images/map_marker.png', 100)
         .then((value) => markerIcon = value);
   }
 
@@ -106,6 +104,8 @@ class _LocationSelectedPageState extends State<LocationSelectedPage> {
 
   @override
   Widget build(BuildContext context) {
+    getBytesFromAsset('assets/images/map_marker.png', 64)
+        .then((value) => markerIcon = value);
     return Scaffold(
       appBar: CustomAppBar("location"),
       body: Column(

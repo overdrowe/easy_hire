@@ -1,3 +1,4 @@
+import 'package:easy_hire/pages/started_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,10 +8,11 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
   final bool automaticallyImplyActions;
 
-  CustomAppBar(this.title, {
-    Key key, this.automaticallyImplyActions = true,
-  })
-      : preferredSize = Size.fromHeight(56.0),
+  CustomAppBar(
+    this.title, {
+    Key key,
+    this.automaticallyImplyActions = true,
+  })  : preferredSize = Size.fromHeight(56.0),
         super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       leading: FlatButton(
         child: Icon(
-          Icons.arrow_back_ios,
+          Icons.arrow_back_ios_outlined,
           color: Color(0xFF252525),
         ),
         onPressed: () {
@@ -26,15 +28,20 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         },
       ),
       actions: [
-        automaticallyImplyActions ? IconButton(
-          icon: Icon(
-            Icons.close,
-            color: Color(0xFF252525),
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ) : Container()
+        automaticallyImplyActions
+            ? IconButton(
+                icon: Icon(
+                  Icons.close,
+                  color: Color(0xFF252525),
+                ),
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => StartedPage()),
+                      (Route<dynamic> route) => false);
+                },
+              )
+            : Container()
       ],
       elevation: 0,
       title: Text(

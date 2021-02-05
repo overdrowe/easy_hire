@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../filters_page.dart';
-import '../../project_page.dart';
+import 'project_page_business.dart';
 import '../../sort_page.dart';
 
 class ProjectsPageBusiness extends StatefulWidget {
@@ -49,7 +49,7 @@ class _ProjectsPageBusinessState extends State<ProjectsPageBusiness> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProjectPage(
+                builder: (context) => ProjectPageBusiness(
                       project: value,
                     )));
       }));

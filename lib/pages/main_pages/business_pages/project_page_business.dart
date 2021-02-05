@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class ProjectPage extends StatelessWidget {
+class ProjectPageBusiness extends StatelessWidget {
   final Project project;
 
-  const ProjectPage({Key key, this.project}) : super(key: key);
+  const ProjectPageBusiness({Key key, this.project}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

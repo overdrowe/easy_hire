@@ -1,3 +1,4 @@
+import 'package:easy_hire/app_style/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,7 +26,7 @@ class CustomButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(6),
       ),
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      color: isActive ? Color(0xFF42B39B) : Color(0xFFB6B7B8),
+      color: isActive ? AppStyle().mainColor : Color(0xFFB6B7B8),
       onPressed: onPressed,
     );
   }

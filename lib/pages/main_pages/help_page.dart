@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HelpPage extends StatefulWidget {
@@ -23,17 +24,17 @@ class _HelpPageState extends State<HelpPage> {
           SizedBox(height: 16),
           customBtnStyle(
             title: "How it works?",
-            icon: Icons.play_circle_filled_sharp,
+            icon: SvgPicture.asset('assets/icons/youtube.svg', color: Color(0xFF252525)),
             onTap: () {},
           ),
           customBtnStyle(
             title: "Live chat support",
-            icon: Icons.message,
+            icon: SvgPicture.asset('assets/icons/chat.svg', color: Color(0xFF252525)),
             onTap: () {},
           ),
           customBtnStyle(
             title: "News",
-            icon: Icons.text_snippet_rounded,
+            icon: SvgPicture.asset('assets/icons/news.svg', color: Color(0xFF252525)),
             onTap: () {},
           ),
         ],
@@ -41,7 +42,7 @@ class _HelpPageState extends State<HelpPage> {
     );
   }
 
-  Widget customBtnStyle({String title, IconData icon, VoidCallback onTap}) {
+  Widget customBtnStyle({String title, Widget icon, VoidCallback onTap}) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       decoration: BoxDecoration(
@@ -67,11 +68,7 @@ class _HelpPageState extends State<HelpPage> {
                     letterSpacing: -0.41,
                   ),
                 ),
-                Icon(
-                  icon,
-                  size: 25,
-                  color: Color(0xFF252525),
-                )
+                icon
               ],
             ),
           ),

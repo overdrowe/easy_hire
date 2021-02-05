@@ -25,7 +25,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
       appBar: AppBar(
         leading: FlatButton(
           child: Icon(
-            Icons.arrow_back_ios,
+            Icons.arrow_back_ios_outlined,
             color: Color(0xFF252525),
           ),
           onPressed: () {

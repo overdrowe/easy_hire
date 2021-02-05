@@ -1,11 +1,10 @@
 import 'package:easy_hire/models/msg_dialog.dart';
 import 'package:easy_hire/models/project.dart';
-import 'package:easy_hire/pages/dialog_page.dart';
+import 'package:easy_hire/pages/main_pages/personal_pages/dialog_page_personal.dart';
+import 'package:easy_hire/pages/main_pages/personal_pages/project_page_personal.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../project_page.dart';
 
 class MessagesPagePersonal extends StatefulWidget {
   @override
@@ -43,9 +42,9 @@ class _MessagesPagePersonalState extends State<MessagesPagePersonal> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProjectPage(
-                  project: project,
-                )));
+                builder: (context) => ProjectPagePersonal(
+                      project,
+                    )));
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -81,7 +80,7 @@ class _MessagesPagePersonalState extends State<MessagesPagePersonal> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => DialogPage(
+                  builder: (context) => DialogPagePersonal(
                         dialogInfo: element,
                       )));
         },

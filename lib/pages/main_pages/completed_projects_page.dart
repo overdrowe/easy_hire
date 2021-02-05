@@ -2,7 +2,7 @@ import 'package:easy_hire/singleton/account_data.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../project_page.dart';
+import 'business_pages/project_page_business.dart';
 
 class CompletedProjectsPage extends StatelessWidget {
   @override
@@ -27,7 +27,7 @@ class CompletedProjectsPage extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProjectPage(project: value)));
+                builder: (context) => ProjectPageBusiness(project: value)));
       }));
     }
     return widgetList;

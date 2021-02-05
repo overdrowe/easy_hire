@@ -1,5 +1,6 @@
-import 'package:easy_hire/pages/dialog_page.dart';
+import 'package:easy_hire/pages/main_pages/business_pages/dialog_page_business.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UserPagePersonal extends StatefulWidget{
@@ -179,10 +180,10 @@ class _UserPagePersonalState extends State<UserPagePersonal> {
         customBorder: CircleBorder(),
         child: Container(
           padding: EdgeInsets.all(12),
-          child: Icon(Icons.messenger),
+          child: SvgPicture.asset('assets/icons/chat.svg'),
         ),
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => DialogPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => DialogPageBusiness()));
         },
       ),
     );

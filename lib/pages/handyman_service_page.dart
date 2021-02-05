@@ -6,6 +6,7 @@ import 'package:easy_hire/widgets/custom_radio.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';
 import 'package:easy_hire/widgets/huge_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HandymanServicePage extends StatefulWidget {
@@ -79,15 +80,22 @@ class _HandymanServicePageState extends State<HandymanServicePage> {
                           hintText: "Add date",
                         )),
                         SizedBox(width: 8),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 12),
-                          child: Container(
-                            decoration: BoxDecoration(
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Color(0xFFF4F4F4),
+                          ),
+                          margin: EdgeInsets.only(bottom: 12),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
                               borderRadius: BorderRadius.circular(5),
-                              color: Color(0xFFF4F4F4),
+                              onTap: (){},
+                              child: Container(
+                                padding: EdgeInsets.all(13),
+                                child: SvgPicture.asset('assets/icons/calendar.svg'),
+                              ),
                             ),
-                            padding: EdgeInsets.all(13),
-                            child: Icon(Icons.calendar_today),
                           ),
                         )
                       ],

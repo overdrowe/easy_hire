@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primarySwatch: Colors.teal,
+              primarySwatch: Colors.grey,
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
-            home: GettingStartedScreen());
+            home: StartedPage());
       },
     );
   }

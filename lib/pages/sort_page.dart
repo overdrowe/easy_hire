@@ -1,3 +1,4 @@
+import 'package:easy_hire/app_style/app_style.dart';
 import 'package:easy_hire/widgets/acceptable_app_bar.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,7 +27,7 @@ class _SortPageState extends State<SortPage> {
     return Container(
       margin: EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: Color(0xFF42B39B),
+        color: AppStyle().mainColor,
         borderRadius: BorderRadius.circular(6),
       ),
       child: Material(
@@ -144,7 +145,7 @@ class _SortPageState extends State<SortPage> {
               child: Icon(
                 Icons.sort,
                 color:
-                value == groupValue ? Color(0xFF42B39B) : Color(0xFFB6B7B8),
+                value == groupValue ? AppStyle().mainColor : Color(0xFFB6B7B8),
               ),
             ),
           )

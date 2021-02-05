@@ -1,20 +1,20 @@
 import 'package:easy_hire/models/msg_dialog.dart';
-import 'package:easy_hire/pages/user_page_personal.dart';
+import 'file:///B:/FlutterProjects/easy_hire/lib/pages/main_pages/business_pages/user_page_personal.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:easy_hire/widgets/message_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DialogPage extends StatefulWidget {
+class DialogPageBusiness extends StatefulWidget {
   final MsgDialog dialogInfo;
 
-  const DialogPage({Key key, this.dialogInfo}) : super(key: key);
+  const DialogPageBusiness({Key key, this.dialogInfo}) : super(key: key);
 
   @override
-  _DialogPageState createState() => _DialogPageState();
+  _DialogPageBusinessState createState() => _DialogPageBusinessState();
 }
 
-class _DialogPageState extends State<DialogPage> {
+class _DialogPageBusinessState extends State<DialogPageBusiness> {
   TextEditingController _controller = new TextEditingController();
 
   @override
