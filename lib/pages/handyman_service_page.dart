@@ -1,4 +1,7 @@
+import 'package:easy_hire/pages/main_pages/business_pages/main_page_business.dart';
+import 'package:easy_hire/pages/main_pages/personal_pages/main_page_personal.dart';
 import 'package:easy_hire/pages/plumbing_page.dart';
+import 'package:easy_hire/singleton/account_data.dart';
 import 'package:easy_hire/widgets/address_panel.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
@@ -21,7 +24,19 @@ class _HandymanServicePageState extends State<HandymanServicePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar("Handyman service"),
+      appBar: CustomAppBar(
+        "Handyman service",
+        onTap: () {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      AccountData().accountType == AccountType.personal
+                          ? MainPagePersonal()
+                          : MainPageBusiness()),
+              (Route<dynamic> route) => false);
+        },
+      ),
       backgroundColor: Colors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -90,10 +105,11 @@ class _HandymanServicePageState extends State<HandymanServicePage> {
                             color: Colors.transparent,
                             child: InkWell(
                               borderRadius: BorderRadius.circular(5),
-                              onTap: (){},
+                              onTap: () {},
                               child: Container(
                                 padding: EdgeInsets.all(13),
-                                child: SvgPicture.asset('assets/icons/calendar.svg'),
+                                child: SvgPicture.asset(
+                                    'assets/icons/calendar.svg'),
                               ),
                             ),
                           ),
@@ -113,7 +129,7 @@ class _HandymanServicePageState extends State<HandymanServicePage> {
                       text: descriptionText,
                       onChanged: (value) {
                         setState(() {
-                            descriptionText = value;
+                          descriptionText = value;
                         });
                       },
                     ),
@@ -128,8 +144,12 @@ class _HandymanServicePageState extends State<HandymanServicePage> {
               title: r"Pay 200$",
               isActive: true,
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PlumbingPage()));
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => AccountData().accountType == AccountType.personal
+                        ? MainPagePersonal()
+                        : MainPageBusiness()),
+                    (Route<dynamic> route) => false);
               },
             ),
           )

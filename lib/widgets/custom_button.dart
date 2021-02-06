@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
         title,
         style: GoogleFonts.montserrat(
           fontSize: 17,
-          color: isActive ? Color(0xFF252525) : Colors.white,
+          color: /*isActive ? Color(0xFF252525) :*/ Colors.white,
           fontWeight: FontWeight.w500,
           letterSpacing: -0.41,
         ),

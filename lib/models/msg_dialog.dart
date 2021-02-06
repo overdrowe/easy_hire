@@ -38,7 +38,7 @@ class MsgDialog {
                           borderRadius: BorderRadius.circular(5)),
                       child: Text(
                         newMsgCount.toString(),
-                        style: GoogleFonts.montserrat(fontSize: 10, color: Color(0xFF252525)),
+                        style: GoogleFonts.montserrat(fontSize: 10, color: Colors.white),
                       ),
                     )
                   : SizedBox(width: 24),

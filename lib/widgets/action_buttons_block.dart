@@ -46,7 +46,7 @@ class _ActionButtonsBlockState extends State<ActionButtonsBlock> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.montserrat(
                   fontSize: 13,
-                  color: Color(0xFF252525),
+                  color: color != Colors.white ? Colors.white : Color(0xFF252525),
                   fontWeight: FontWeight.w500,
                 ),
               ),

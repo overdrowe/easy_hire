@@ -3,13 +3,12 @@ import 'dart:ui';
 
 import 'package:easy_hire/app_style/app_style.dart';
 import 'package:easy_hire/pages/main_pages/business_pages/main_page_business.dart';
-import 'package:easy_hire/pages/main_pages/personal_pages/home_page_personal.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
+import 'package:easy_hire/widgets/custom_check_box.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-
 
 class HandymanCreatingPage extends StatefulWidget {
   @override
@@ -21,13 +20,6 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
   bool confirmCheckBoxValue = false;
 
   List<File> files = new List<File>();
-
-  Future<void> getPicture() async {
-    final image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      files.add(image);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +74,9 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => MainPageBusiness()),
-                          (Route<dynamic> route) => false);
+                      MaterialPageRoute(
+                          builder: (context) => MainPageBusiness()),
+                      (Route<dynamic> route) => false);
                 },
               ),
               SizedBox(
@@ -96,35 +89,11 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
     );
   }
 
-  Widget get selectCategoryButton {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
-        color: Color(0xFFF4F4F4),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(6),
-          onTap: () {},
-          child: Container(
-            padding: EdgeInsets.all(16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "select a category",
-                  style: GoogleFonts.montserrat(
-                      fontSize: 16, color: Color(0xFFB6B7B8)),
-                ),
-                Icon(Icons.arrow_forward_ios,
-                    size: 16, color: Color(0xFFB6B7B8))
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+  Future<void> getPicture() async {
+    final image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      files.add(image);
+    });
   }
 
   Widget horizontalList() {
@@ -262,7 +231,7 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
                         "Optional",
                         style: GoogleFonts.montserrat(
                           fontSize: 12,
-                          color: Color(0xFF252525),
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -276,34 +245,11 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
     );
   }
 
-  Widget checkBoxDecoration(VoidCallback onTap, bool value) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-          height: 24,
-          width: 24,
-          decoration: value
-              ? BoxDecoration(
-                  color: AppStyle().mainColor,
-                  borderRadius: BorderRadius.circular(4))
-              : BoxDecoration(
-                  color: Colors.transparent,
-                  border: Border.all(color: Color(0xFFB6B7B8), width: 2),
-                  borderRadius: BorderRadius.circular(4)),
-          child: value
-              ? Icon(
-                  Icons.check,
-                  color: Colors.white,
-                )
-              : Container()),
-    );
-  }
-
   Widget customCheckBox({String text, VoidCallback onTap, bool value}) {
     return Container(
       child: Row(
         children: [
-          checkBoxDecoration(onTap, value),
+          CustomCheckBox(onTap: onTap, value: value),
           SizedBox(width: 16),
           Text(
             text,

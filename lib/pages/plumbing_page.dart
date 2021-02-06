@@ -1,3 +1,4 @@
+import 'package:easy_hire/singleton/account_data.dart';
 import 'package:easy_hire/widgets/address_panel.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
@@ -7,7 +8,9 @@ import 'package:easy_hire/widgets/huge_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'registration_pages/add_files_page.dart';
+import 'main_pages/business_pages/main_page_business.dart';
+import 'main_pages/personal_pages/main_page_personal.dart';
+import 'add_files_page.dart';
 
 class PlumbingPage extends StatefulWidget {
   @override
@@ -200,7 +203,16 @@ class _PlumbingPageState extends State<PlumbingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar("Plumbing"),
+      appBar: CustomAppBar("Plumbing", onTap: (){
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                AccountData().accountType == AccountType.personal
+                    ? MainPagePersonal()
+                    : MainPageBusiness()),
+                (Route<dynamic> route) => false);
+      },),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(

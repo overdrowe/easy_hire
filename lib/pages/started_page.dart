@@ -21,15 +21,15 @@ class _StartedPageState extends State<StartedPage> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 3), (Timer timer) {
-      _currentPage = (_currentPage + 1) % slideList.length;
-
-      _pageController.animateToPage(
-        _currentPage,
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-      );
-    });
+    // Timer.periodic(Duration(seconds: 3), (Timer timer) {
+    //   _currentPage = (_currentPage + 1) % slideList.length;
+    //
+    //   _pageController.animateToPage(
+    //     _currentPage,
+    //     duration: Duration(milliseconds: 300),
+    //     curve: Curves.easeIn,
+    //   );
+    // });
   }
 
   @override

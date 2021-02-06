@@ -262,10 +262,7 @@ class _AccountPageBusinessState extends State<AccountPageBusiness> {
                     "Personal",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.montserrat(
-                      fontWeight:
-                          AccountData().accountType == AccountType.personal
-                              ? FontWeight.bold
-                              : FontWeight.normal,
+                      fontWeight:FontWeight.normal,
                       fontSize: 15,
                       color: Color(0xFF252525),
                     ),
@@ -292,12 +289,9 @@ class _AccountPageBusinessState extends State<AccountPageBusiness> {
                     "Business",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.montserrat(
-                      fontWeight:
-                          AccountData().accountType == AccountType.business
-                              ? FontWeight.bold
-                              : FontWeight.normal,
+                      fontWeight: FontWeight.bold,
                       fontSize: 15,
-                      color: Color(0xFF252525),
+                      color: Colors.white,
                     ),
                   ),
                 ),

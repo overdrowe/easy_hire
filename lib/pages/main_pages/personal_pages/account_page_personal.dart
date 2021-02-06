@@ -48,7 +48,11 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
                         title: "Completed project",
                         src: 'assets/icons/archive.svg',
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CompletedProjectsPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      CompletedProjectsPage()));
                         },
                       ),
                       settingBtn(
@@ -87,7 +91,11 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
                           ),
                         ),
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => EnterCurrentPasswordPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      EnterCurrentPasswordPage()));
                         },
                       ),
                       logOutBtn,
@@ -145,7 +153,10 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
         customBorder: CircleBorder(),
         child: Container(
           padding: EdgeInsets.all(10),
-          child: Icon(Icons.edit_outlined, size: 20,),
+          child: Icon(
+            Icons.edit_outlined,
+            size: 20,
+          ),
         ),
         onTap: () {
           Navigator.push(context,
@@ -162,7 +173,10 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
         padding: EdgeInsets.all(16),
         child: Row(
           children: [
-            SvgPicture.asset('assets/icons/notification.svg', color: Color(0xFF252525),),
+            SvgPicture.asset(
+              'assets/icons/notification.svg',
+              color: Color(0xFF252525),
+            ),
             SizedBox(width: 24),
             Text(
               "Notifications",
@@ -213,18 +227,13 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6),
                   ),
-                  child: Text(
-                    "Personal",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(
-                      fontWeight:
-                          AccountData().accountType == AccountType.personal
-                              ? FontWeight.bold
-                              : FontWeight.normal,
-                      fontSize: 15,
-                      color: Color(0xFF252525),
-                    ),
-                  ),
+                  child: Text("Personal",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.white,
+                      )),
                 ),
               ),
             ),
@@ -244,7 +253,8 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MainPageBusiness(currentIndex: 3)));
+                            builder: (context) =>
+                                MainPageBusiness(currentIndex: 3)));
                   });
                 },
                 child: Container(
@@ -256,10 +266,7 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
                     "Business",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.montserrat(
-                      fontWeight:
-                          AccountData().accountType == AccountType.business
-                              ? FontWeight.bold
-                              : FontWeight.normal,
+                      fontWeight: FontWeight.normal,
                       fontSize: 15,
                       color: Color(0xFF252525),
                     ),
@@ -333,15 +340,17 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
     );
   }
 
-  settingBtn(
-      {String src, String title, VoidCallback onTap, Widget trailing}) {
+  settingBtn({String src, String title, VoidCallback onTap, Widget trailing}) {
     return InkWell(
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Row(
           children: [
-            SvgPicture.asset(src, color: Color(0xFF252525),),
+            SvgPicture.asset(
+              src,
+              color: Color(0xFF252525),
+            ),
             SizedBox(width: 24),
             Text(
               title,
@@ -371,7 +380,10 @@ class _AccountPagePersonalState extends State<AccountPagePersonal> {
         padding: EdgeInsets.all(16),
         child: Row(
           children: [
-            SvgPicture.asset('assets/icons/exit.svg', color: Color(0xFFE14949),),
+            SvgPicture.asset(
+              'assets/icons/exit.svg',
+              color: Color(0xFFE14949),
+            ),
             SizedBox(width: 24),
             Text(
               "Log out",

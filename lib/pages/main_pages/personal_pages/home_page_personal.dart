@@ -1,12 +1,12 @@
-import 'dart:ui';
-
+import 'package:easy_hire/custom_clippers/my_clipper.dart';
+import 'package:easy_hire/pages/handyman_service_page.dart';
+import 'package:easy_hire/pages/plumbing_page.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:easy_hire/widgets/ripple_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -56,7 +56,9 @@ class _HomePageState extends State<HomePage> {
           color: Colors.transparent,
           child: InkWell(
             borderRadius: BorderRadius.circular(40),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PlumbingPage()));
+            },
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -372,7 +374,9 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        RippleWidget(onTap: onTap)
+        RippleWidget(onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HandymanServicePage()));
+        })
       ],
     );
   }
@@ -596,25 +600,5 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
-}
-
-class MyClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(size.width / 2 - 20, size.height-13);
-    path.quadraticBezierTo(
-        size.width / 2 - 8, size.height - 13, size.width / 2, size.height);
-    path.quadraticBezierTo(
-        size.width / 2 + 8, size.height - 13, size.width / 2 + 20, size.height-13);
-    path.lineTo(size.width, 0);
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return true;
   }
 }

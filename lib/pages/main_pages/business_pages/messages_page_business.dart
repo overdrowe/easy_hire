@@ -13,40 +13,6 @@ class MessagesPageBusiness extends StatefulWidget {
 
 class _MessagesPageBusinessState extends State<MessagesPageBusiness> {
 
-  get openProjectsMessages {
-    return Container(
-      child: ListView.builder(
-          itemCount: AccountData().dialogsList.length,
-          itemBuilder: (context, index) {
-            return AccountData().dialogsList[index].getDialogItem(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DialogPageBusiness(
-                      dialogInfo: AccountData().dialogsList[index],
-                    )));
-              },
-            );
-          }),
-    );
-  }
-
-  get inWorkMessages {
-    return Container(
-      child: ListView.builder(
-          itemCount: AccountData().dialogsList.length,
-          itemBuilder: (context, index) {
-            return AccountData().dialogsList[index].getDialogItem(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DialogPageBusiness(
-                      dialogInfo: AccountData().dialogsList[index],
-                    )));
-              },
-            );
-          }),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -85,7 +51,7 @@ class _MessagesPageBusinessState extends State<MessagesPageBusiness> {
                       bottom: TabBar(
                           unselectedLabelColor: Color(0xFF252525),
                           indicatorSize: TabBarIndicatorSize.tab,
-                          labelColor: Color(0xFF252525),
+                          labelColor: Colors.white,
                           unselectedLabelStyle: GoogleFonts.montserrat(
                             fontSize: 15,
                           ),
@@ -128,5 +94,39 @@ class _MessagesPageBusinessState extends State<MessagesPageBusiness> {
                 ),
               ),
             )));
+  }
+
+  get openProjectsMessages {
+    return Container(
+      child: ListView.builder(
+          itemCount: AccountData().dialogsList.length,
+          itemBuilder: (context, index) {
+            return AccountData().dialogsList[index].getDialogItem(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DialogPageBusiness(
+                      dialogInfo: AccountData().dialogsList[index],
+                    )));
+              },
+            );
+          }),
+    );
+  }
+
+  get inWorkMessages {
+    return Container(
+      child: ListView.builder(
+          itemCount: AccountData().dialogsList.length,
+          itemBuilder: (context, index) {
+            return AccountData().dialogsList[index].getDialogItem(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DialogPageBusiness(
+                      dialogInfo: AccountData().dialogsList[index],
+                    )));
+              },
+            );
+          }),
+    );
   }
 }

@@ -6,10 +6,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
   final String title;
+  final VoidCallback onTap;
   final bool automaticallyImplyActions;
 
   CustomAppBar(
     this.title, {
+    this.onTap,
     Key key,
     this.automaticallyImplyActions = true,
   })  : preferredSize = Size.fromHeight(56.0),
@@ -34,7 +36,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   Icons.close,
                   color: Color(0xFF252525),
                 ),
-                onPressed: () {
+                onPressed: onTap ?? () {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) => StartedPage()),

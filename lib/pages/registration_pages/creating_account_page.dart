@@ -31,7 +31,7 @@ class _CreatingAccountPageState extends State<CreatingAccountPage> {
                         preferredSize:
                             Size(MediaQuery.of(context).size.width, 56),
                         child: Container(
-                          padding: EdgeInsets.only(left: 16, top: 8, right: 16),
+                          margin: EdgeInsets.only(left: 16, top: 8, right: 16),
                           child: AppBar(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(6)),
@@ -42,7 +42,7 @@ class _CreatingAccountPageState extends State<CreatingAccountPage> {
                             bottom: TabBar(
                                 unselectedLabelColor: Color(0xFF252525),
                                 indicatorSize: TabBarIndicatorSize.tab,
-                                labelColor: Color(0xFF252525),
+                                labelColor: Colors.white,
                                 unselectedLabelStyle: GoogleFonts.montserrat(
                                   fontSize: 15,
                                 ),
@@ -56,15 +56,15 @@ class _CreatingAccountPageState extends State<CreatingAccountPage> {
                                     color: AppStyle().mainColor),
                                 tabs: [
                                   Tab(
-                                    child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text("Licensed contractor"),
+                                    child: Text(
+                                      "Licensed contractor",
+                                      textAlign: TextAlign.center,
                                     ),
                                   ),
                                   Tab(
-                                    child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text("Handyman"),
+                                    child: Text(
+                                      "Handyman",
+                                      textAlign: TextAlign.center,
                                     ),
                                   ),
                                 ]),
