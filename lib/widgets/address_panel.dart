@@ -1,5 +1,5 @@
-import 'file:///B:/FlutterProjects/easy_hire/lib/pages/registration_pages/location_selection_page.dart';
-import 'file:///B:/FlutterProjects/easy_hire/lib/pages/registration_pages/search_location_page.dart';
+import 'package:easy_hire/pages/location_page/location_selection_page.dart';
+import 'package:easy_hire/pages/location_page/search_location_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,13 +21,16 @@ class _AddressPanelState extends State<AddressPanel> {
       color: Color(0xFFB6B7B8),
       height: 2,
       thickness: 0.5,
-      indent: 16,
-      endIndent: 16,
+      indent: 12,
+      endIndent: 12,
     );
   }
 
+  String _selectedAddress;
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
@@ -48,8 +51,8 @@ class _AddressPanelState extends State<AddressPanel> {
                         builder: (context) => SearchLocationPage()));
               },
               child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                  child: Text(widget.addressName,
+                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                  child: Text(_selectedAddress.toString() == "" ? widget.addressName : _selectedAddress.toString(),
                       style: GoogleFonts.montserrat(
                           fontSize: 16, color: Color(0xFFB6B7B8)))),
             ),
@@ -58,13 +61,18 @@ class _AddressPanelState extends State<AddressPanel> {
           Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => LocationSelectedPage(findCurrentLocation: true)));
+              },
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                 child: Row(
                   children: [
                     Icon(Icons.near_me),
-                    SizedBox(width: 8),
+                    SizedBox(width: 10),
                     Text("my location",
                         style: GoogleFonts.montserrat(
                             fontSize: 16, color: Color(0xFF252525))),
@@ -79,7 +87,7 @@ class _AddressPanelState extends State<AddressPanel> {
             child: InkWell(
               borderRadius: BorderRadius.circular(6),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                 child: Row(
                   children: [
                     Icon(Icons.location_on),
@@ -94,7 +102,12 @@ class _AddressPanelState extends State<AddressPanel> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => LocationSelectedPage()));
+                        builder: (context) => LocationSelectedPage())).then((value) {
+                  setState(() {
+                    _selectedAddress = value;
+                    print(_selectedAddress);
+                  });
+                });
               },
             ),
           )

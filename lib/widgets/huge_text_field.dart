@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HugeTextField extends StatefulWidget {
@@ -22,6 +23,7 @@ class _HugeTextFieldState extends State<HugeTextField> {
           padding: EdgeInsets.only(bottom: 12),
           child: TextField(
             onChanged: widget.onChanged,
+            maxLength: 500,
             minLines: 10,
             maxLines: null,
             decoration: InputDecoration(
@@ -41,14 +43,14 @@ class _HugeTextFieldState extends State<HugeTextField> {
                 )),
           ),
         ),
-        Positioned(
-            right: 16,
-            bottom: 16,
-            child: Text(
-              widget.text.length.toString() + "/500",
-              style: GoogleFonts.montserrat(
-                  fontSize: 12, color: Color(0xFFB6B7B8)),
-            ))
+        // Positioned(
+        //     right: 16,
+        //     bottom: 16,
+        //     child: Text(
+        //       widget.text.length.toString() + "/500",
+        //       style: GoogleFonts.montserrat(
+        //           fontSize: 12, color: Color(0xFFB6B7B8)),
+        //     ))
       ],
     );
 

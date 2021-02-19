@@ -5,7 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 class ActionButtonsBlock extends StatefulWidget {
   final Color secondColor;
 
-  const ActionButtonsBlock({Key key, this.secondColor = Colors.white}) : super(key: key);
+  const ActionButtonsBlock({Key key, this.secondColor = Colors.white})
+      : super(key: key);
 
   @override
   _ActionButtonsBlockState createState() => _ActionButtonsBlockState();
@@ -19,8 +20,9 @@ class _ActionButtonsBlockState extends State<ActionButtonsBlock> {
       child: Row(
         children: [
           btnItem(title: "hire", color: AppStyle().mainColor, onTap: () {}),
-          btnItem(title: "block", color: widget.secondColor, onTap: () {}),
           btnItem(title: "deny", color: widget.secondColor, onTap: () {}),
+          // btnItem(title: "block", color: widget.secondColor, onTap:),
+          myPopMenu
         ],
       ),
     );
@@ -46,7 +48,9 @@ class _ActionButtonsBlockState extends State<ActionButtonsBlock> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.montserrat(
                   fontSize: 13,
-                  color: color != Colors.white ? Colors.white : Color(0xFF252525),
+                  color: color == AppStyle().mainColor
+                      ? Colors.white
+                      : Color(0xFF252525),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -55,5 +59,39 @@ class _ActionButtonsBlockState extends State<ActionButtonsBlock> {
         ),
       ),
     );
+  }
+
+  get myPopMenu {
+    return PopupMenuButton(
+        onSelected: (value) {
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content:
+                value == 1 ? Text("The user is blocked") : Text("Report sent"),
+          ));
+        },
+        itemBuilder: (context) => [
+              PopupMenuItem(
+                  value: 1,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(2, 2, 8, 2),
+                        child: Icon(Icons.block),
+                      ),
+                      Text('Block')
+                    ],
+                  )),
+              PopupMenuItem(
+                  value: 2,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(2, 2, 8, 2),
+                        child: Icon(Icons.report_gmailerrorred_outlined),
+                      ),
+                      Text('Report user')
+                    ],
+                  )),
+            ]);
   }
 }

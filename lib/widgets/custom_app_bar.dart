@@ -1,4 +1,4 @@
-import 'package:easy_hire/pages/started_page.dart';
+import 'file:///B:/FlutterProjects/easy_hire/lib/pages/started_page/started_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

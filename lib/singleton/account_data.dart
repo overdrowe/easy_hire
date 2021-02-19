@@ -1,3 +1,7 @@
+
+
+import 'dart:io';
+
 import 'package:easy_hire/models/msg_dialog.dart';
 import 'package:easy_hire/models/project.dart';
 import 'package:easy_hire/models/review.dart';
@@ -5,6 +9,7 @@ import 'package:easy_hire/models/review.dart';
 class AccountData {
   static final AccountData _singleton = new AccountData._internal();
   AccountType accountType = AccountType.personal;
+  File avatarImageFile;
 
   factory AccountData() {
     return _singleton;
@@ -46,15 +51,6 @@ class AccountData {
         description:
             "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. "
             "Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),
-    Project(
-      title: "Paint the walls",
-    ),
-    Project(
-      title: "Paint the walls",
-    ),
-    Project(
-      title: "Paint the walls",
-    ),
   ];
 
   List<Review> reviewsList = [

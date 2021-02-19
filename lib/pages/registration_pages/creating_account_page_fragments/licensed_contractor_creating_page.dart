@@ -1,9 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:easy_hire/app_style/app_style.dart';
-import 'package:easy_hire/pages/main_pages/business_pages/main_page_business.dart';
-import 'package:easy_hire/pages/main_pages/personal_pages/home_page_personal.dart';
+import 'file:///B:/FlutterProjects/easy_hire/lib/pages/main_pages/main_page_business.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:easy_hire/widgets/custom_check_box.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';
@@ -21,11 +19,99 @@ class _LicensedContractorCreatingPageState
     extends State<LicensedContractorCreatingPage> {
   List<File> files = new List<File>();
 
-  Future<void> getPicture() async {
-    final image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      files.add(image);
-    });
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              physics: ScrollPhysics(
+                parent: BouncingScrollPhysics(),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(height: 30),
+                  selectCategoryButton,
+                  SizedBox(height: 19),
+                  photoId,
+                  SizedBox(height: 14),
+                  liability,
+                  SizedBox(height: 6),
+                  licenceNumber,
+                  SizedBox(height: 10),
+                  offersForHandyman,
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          attentionText,
+          SizedBox(height: 10),
+          CustomButton(
+            title: "Create an account",
+            isActive: true,
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainPageBusiness()),
+                  (Route<dynamic> route) => false);
+            },
+          ),
+          SizedBox(height: 16)
+        ],
+      ),
+    );
+  }
+
+  _imgFromCamera() async {
+    File image = await ImagePicker.pickImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
+    if (image != null)
+      setState(() {
+        files.add(image);
+      });
+  }
+
+  _imgFromGallery() async {
+    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if (image != null)
+      setState(() {
+        files.add(image);
+      });
+  }
+
+  _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Photo Library'),
+                      onTap: () {
+                        _imgFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Camera'),
+                    onTap: () {
+                      _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+    );
   }
 
   bool checkBoxValue = true;
@@ -65,7 +151,6 @@ class _LicensedContractorCreatingPageState
     return Container(
       width: 100,
       height: 100,
-      margin: EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
           color: Color(0xFFF4F4F4), borderRadius: BorderRadius.circular(4)),
       child: Material(
@@ -73,7 +158,7 @@ class _LicensedContractorCreatingPageState
         child: InkWell(
           borderRadius: BorderRadius.circular(4),
           onTap: () {
-            getPicture();
+            _showPicker(context);
           },
           child: Container(
             child: Icon(
@@ -89,30 +174,50 @@ class _LicensedContractorCreatingPageState
 
   get getImageList {
     List<Widget> widgetsList = new List<Widget>();
-    widgetsList.add(listItem);
-
     files.forEach((element) {
-      widgetsList.add(Container(
-        width: 100,
-        height: 100,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: FileImage(element),
-            fit: BoxFit.cover,
+      widgetsList.add(
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 8),
+          child: Stack(
+            children: [
+              Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.3), BlendMode.luminosity),
+                    image: FileImage(element),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              Positioned(
+                right: 4,
+                top: 4,
+                child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        files.remove(element);
+                      });
+                    },
+                    child: Icon(
+                      Icons.close,
+                      color: Color(0xFFE9E9E9).withOpacity(0.7),
+                    )),
+              ),
+            ],
           ),
-          borderRadius: BorderRadius.circular(8.0),
         ),
-        margin: EdgeInsets.all(4),
-      ));
+      );
     });
-    print(files.length);
-    print(widgetsList.length);
+    widgetsList.add(listItem);
     return widgetsList;
   }
 
   Widget get photoId {
     return Container(
-      padding: EdgeInsets.only(top: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -123,6 +228,7 @@ class _LicensedContractorCreatingPageState
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF252525)),
           ),
+          SizedBox(height: 12),
           SingleChildScrollView(
             physics: ScrollPhysics(
               parent: BouncingScrollPhysics(),
@@ -150,7 +256,7 @@ class _LicensedContractorCreatingPageState
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 12),
           CustomTextField(
             hintText: "Insurance carrier",
           ),
@@ -167,7 +273,6 @@ class _LicensedContractorCreatingPageState
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(height: 16),
           Text(
             "Contractor Licence number",
             style: GoogleFonts.montserrat(
@@ -176,7 +281,7 @@ class _LicensedContractorCreatingPageState
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 12),
           CustomTextField(
             hintText: "Contractor Licence number",
           ),
@@ -187,7 +292,7 @@ class _LicensedContractorCreatingPageState
 
   Widget get offersForHandyman {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16),
+      padding: EdgeInsets.only(top: 10),
       child: Row(
         children: [
           CustomCheckBox(
@@ -212,55 +317,12 @@ class _LicensedContractorCreatingPageState
   }
 
   Widget get attentionText {
-    return Padding(
-      padding: EdgeInsets.only(top: 16, bottom: 16),
-      child: Text(
-        "To register as a Licensed contractor,\nyou need to upload the data",
-        textAlign: TextAlign.center,
-        style: GoogleFonts.montserrat(
-          fontSize: 12,
-          color: Color(0xFF252525),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        physics: ScrollPhysics(
-          parent: BouncingScrollPhysics(),
-        ),
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(height: 32),
-              selectCategoryButton,
-              photoId,
-              liability,
-              licenceNumber,
-              offersForHandyman,
-              attentionText,
-              CustomButton(
-                title: "Create an account",
-                isActive: true,
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MainPageBusiness()),
-                      (Route<dynamic> route) => false);
-                },
-              ),
-              SizedBox(
-                height: 16,
-              )
-            ],
-          ),
-        ),
+    return Text(
+      "To register as a Licensed contractor,\nyou need to upload the data",
+      textAlign: TextAlign.center,
+      style: GoogleFonts.montserrat(
+        fontSize: 11,
+        color: Color(0xFF252525),
       ),
     );
   }

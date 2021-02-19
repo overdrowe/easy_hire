@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:easy_hire/app_style/app_style.dart';
-import 'package:easy_hire/pages/main_pages/business_pages/main_page_business.dart';
+import 'file:///B:/FlutterProjects/easy_hire/lib/pages/main_pages/main_page_business.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:easy_hire/widgets/custom_check_box.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';
@@ -18,28 +18,28 @@ class HandymanCreatingPage extends StatefulWidget {
 class _HandymanPagePageState extends State<HandymanCreatingPage> {
   bool checkBoxValue = true;
   bool confirmCheckBoxValue = false;
-
   List<File> files = new List<File>();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: SingleChildScrollView(
-            physics: ScrollPhysics(
-              parent: BouncingScrollPhysics(),
-            ),
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              physics: ScrollPhysics(
+                parent: BouncingScrollPhysics(),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: 32),
+                  SizedBox(height: 30),
                   photoId,
+                  SizedBox(height: 14),
                   liability,
-                  SizedBox(height: 8),
+                  SizedBox(height: 16),
                   customCheckBox(
                       value: checkBoxValue,
                       text: "Get notifications about projects",
@@ -61,39 +61,71 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
               ),
             ),
           ),
-        ),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              attentionText,
-              CustomButton(
-                title: "Create an account",
-                isActive: confirmCheckBoxValue,
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MainPageBusiness()),
-                      (Route<dynamic> route) => false);
-                },
-              ),
-              SizedBox(
-                height: 16,
-              )
-            ],
+          attentionText,
+          SizedBox(height: 6),
+          CustomButton(
+            title: "Create an account",
+            isActive: confirmCheckBoxValue,
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainPageBusiness()),
+                  (Route<dynamic> route) => false);
+            },
           ),
-        )
-      ],
+          SizedBox(
+            height: 16,
+          )
+        ],
+      ),
     );
   }
 
-  Future<void> getPicture() async {
-    final image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      files.add(image);
-    });
+  _imgFromCamera() async {
+    File image = await ImagePicker.pickImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
+    if (image != null)
+      setState(() {
+        files.add(image);
+      });
+  }
+
+  _imgFromGallery() async {
+    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if (image != null)
+      setState(() {
+        files.add(image);
+      });
+  }
+
+  _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Photo Library'),
+                      onTap: () {
+                        _imgFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Camera'),
+                    onTap: () {
+                      _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+    );
   }
 
   Widget horizontalList() {
@@ -120,6 +152,7 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF252525)),
           ),
+          SizedBox(height: 12),
           SingleChildScrollView(
             physics: ScrollPhysics(
               parent: BouncingScrollPhysics(),
@@ -138,7 +171,6 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
     return Container(
       width: 100,
       height: 100,
-      margin: EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
           color: Color(0xFFF4F4F4), borderRadius: BorderRadius.circular(4)),
       child: Material(
@@ -146,7 +178,7 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
         child: InkWell(
           borderRadius: BorderRadius.circular(4),
           onTap: () {
-            getPicture();
+            _showPicker(context);
           },
           child: Container(
             child: Icon(
@@ -162,24 +194,45 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
 
   get getImageList {
     List<Widget> widgetsList = new List<Widget>();
-    widgetsList.add(listItem);
-
     files.forEach((element) {
-      widgetsList.add(Container(
-        width: 100,
-        height: 100,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: FileImage(element),
-            fit: BoxFit.cover,
+      widgetsList.add(
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 8),
+          child: Stack(
+            children: [
+              Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.3), BlendMode.luminosity),
+                    image: FileImage(element),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              Positioned(
+                right: 4,
+                top: 4,
+                child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        files.remove(element);
+                      });
+                    },
+                    child: Icon(
+                      Icons.close,
+                      color: Color(0xFFE9E9E9).withOpacity(0.7),
+                    )),
+              ),
+            ],
           ),
-          borderRadius: BorderRadius.circular(8.0),
         ),
-        margin: EdgeInsets.all(4),
-      ));
+      );
     });
-    print(files.length);
-    print(widgetsList.length);
+    widgetsList.add(listItem);
     return widgetsList;
   }
 
@@ -216,7 +269,6 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
           Row(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 8),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
                     color: AppStyle().mainColor),
@@ -264,15 +316,12 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
   }
 
   Widget get attentionText {
-    return Padding(
-      padding: EdgeInsets.only(top: 16, bottom: 16),
-      child: Text(
-        "To register as a Handyman, you need to upload your data",
-        textAlign: TextAlign.center,
-        style: GoogleFonts.montserrat(
-          fontSize: 12,
-          color: Color(0xFF252525),
-        ),
+    return Text(
+      "To register as a Handyman, you need to upload your data",
+      textAlign: TextAlign.center,
+      style: GoogleFonts.montserrat(
+        fontSize: 11,
+        color: Color(0xFF252525),
       ),
     );
   }

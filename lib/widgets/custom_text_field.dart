@@ -21,7 +21,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return  Container(
-        padding: EdgeInsets.only(bottom: 12),
+        padding: EdgeInsets.only(bottom: 10),
         child: TextField(
           keyboardType: widget.keyboardType,
           inputFormatters: widget.inputFormatters,

@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -33,10 +35,13 @@ dependencies:
   google_maps_flutter: ^1.1.1
   location: ^2.3.5
   geocoder: ^0.2.1
-  image_picker: ^0.6.7+21
+  image_picker:
   flutter_switch: ^0.2.0
   flutter_svg:
-
+  google_place: ^0.3.3
+#  address_search_field: ^3.0.10
+#  flutter_google_places:
+#  dio:
 
 dev_dependencies:
   flutter_test:
@@ -56,37 +61,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/image1.jpg
-    - assets/images/logo.png
-    - assets/images/apple_logo.png
-    - assets/images/category1.png
-    - assets/images/category2.png
-    - assets/images/category3.png
-    - assets/images/google_logo.png
-    - assets/images/facebook_logo.png
-    - assets/images/map_marker.png
-    - assets/icons/like.svg
-    - assets/icons/calendar.svg
-    - assets/icons/dislike.svg
-    - assets/icons/sort.svg
-    - assets/icons/washer.svg
-    - assets/icons/fence.svg
-    - assets/icons/help.svg
-    - assets/icons/chat.svg
-    - assets/icons/account.svg
-    - assets/icons/work.svg
-    - assets/icons/project.svg
-    - assets/icons/home.svg
-    - assets/icons/briefcase.svg
-    - assets/icons/youtube.svg
-    - assets/icons/news.svg
-    - assets/icons/location.svg
-    - assets/icons/exit.svg
-    - assets/icons/password.svg
-    - assets/icons/mail.svg
-    - assets/icons/notification.svg
-    - assets/icons/archive.svg
-    - assets/icons/reviews.svg
+    - lang/en.json
+    - assets/images/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
