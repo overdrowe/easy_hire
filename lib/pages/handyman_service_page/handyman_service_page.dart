@@ -21,7 +21,12 @@ class _HandymanServicePageState extends State<HandymanServicePage> {
   int _radioValue = 0;
   String descriptionText = "";
 
-  AddressPanel _addressPanel = AddressPanel(addressName: "Add address");
+  AddressPanel _addressPanel = AddressPanel(
+      onChanged: (value) {
+        print("Handyman service: $value");
+      },
+      addressName: "Add "
+          "address");
 
   @override
   Widget build(BuildContext context) {

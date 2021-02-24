@@ -7,7 +7,9 @@ class AddressPanel extends StatefulWidget {
 
   final String addressName;
 
-  const AddressPanel({Key key, this.addressName}) : super(key: key);
+  final Function(String) onChanged;
+
+  const AddressPanel({Key key, this.addressName, @required this.onChanged}) : super(key: key);
 
   @override
   _AddressPanelState createState() => _AddressPanelState();
@@ -48,11 +50,13 @@ class _AddressPanelState extends State<AddressPanel> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SearchLocationPage()));
+                        builder: (context) => SearchLocationPage())).then((value) {
+                  changeAddress(value);
+                });
               },
               child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-                  child: Text(_selectedAddress.toString() == "" ? widget.addressName : _selectedAddress.toString(),
+                  child: Text(_selectedAddress ?? widget.addressName,
                       style: GoogleFonts.montserrat(
                           fontSize: 16, color: Color(0xFFB6B7B8)))),
             ),
@@ -65,7 +69,9 @@ class _AddressPanelState extends State<AddressPanel> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => LocationSelectedPage(findCurrentLocation: true)));
+                        builder: (context) => LocationSelectedPage(findCurrentLocation: true))).then((value) {
+                  changeAddress(value);
+                });
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
@@ -103,10 +109,7 @@ class _AddressPanelState extends State<AddressPanel> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => LocationSelectedPage())).then((value) {
-                  setState(() {
-                    _selectedAddress = value;
-                    print(_selectedAddress);
-                  });
+                  changeAddress(value);
                 });
               },
             ),
@@ -114,5 +117,14 @@ class _AddressPanelState extends State<AddressPanel> {
         ],
       ),
     );
+  }
+
+  void changeAddress(String value){
+    if (value != "" && value != null)
+    setState(() {
+      _selectedAddress = value;
+      if(widget.onChanged != null) widget.onChanged(_selectedAddress);
+      print(_selectedAddress);
+    });
   }
 }

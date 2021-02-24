@@ -184,7 +184,7 @@ class _HomePagePersonalState extends State<HomePagePersonal> {
       child: Column(
         children: [
           flatRateFieldTitle,
-          sndBlockBtns,
+          sndBlockButtons,
           currentSet == ServiceSet.handyman
               ? handymanServicesField
               : clearingServicesField,
@@ -274,7 +274,7 @@ class _HomePagePersonalState extends State<HomePagePersonal> {
     );
   }
 
-  get sndBlockBtns {
+  get sndBlockButtons {
     return Padding(
       padding: EdgeInsets.only(left: 16, right: 16, top: 14),
       child: Row(
@@ -332,6 +332,8 @@ class _HomePagePersonalState extends State<HomePagePersonal> {
                   children: [
                     Text(
                       title,
+                      overflow: TextOverflow.fade,
+                      maxLines: 1,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.montserrat(
                         fontSize: 12.11,
@@ -345,6 +347,8 @@ class _HomePagePersonalState extends State<HomePagePersonal> {
                     ),
                     Text(
                       title,
+                      overflow: TextOverflow.fade,
+                      maxLines: 1,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.montserrat(
                         fontSize: 12.11,

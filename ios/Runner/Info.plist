@@ -2,6 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+	<key>CLLocationManager</key>
+	<string>for get current location and select current position on map</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>accept microphone usage for voice recognition</string>
+	<key>NSCameraUsageDescription</key>
+	<string>slect image from camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>for select image from folder</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

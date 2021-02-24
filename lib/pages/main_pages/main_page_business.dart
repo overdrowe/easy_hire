@@ -42,55 +42,66 @@ class _MainPageBusinessState extends State<MainPageBusiness> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: tabs[_currentIndex],
-        bottomNavigationBar: SizedBox(
-          height: 54,
-          child: Hero(
-            tag: "NavigationBar",
-            child: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              selectedItemColor: Color(0xFF0070C2),
-              unselectedItemColor: Color(0xFF252525),
-              currentIndex: _currentIndex,
-              showUnselectedLabels: true,
-              onTap: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset('assets/icons/home.svg',
-                      color: _currentIndex == 0
-                          ? Color(0xFF0070C2)
-                          : Color(0xFF252525)),
-                  label: "Home",
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset('assets/icons/work.svg',
-                      color: _currentIndex == 1
-                          ? Color(0xFF0070C2)
-                          : Color(0xFF252525)),                label: "Projects",
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset('assets/icons/chat.svg',
-                      color: _currentIndex == 2
-                          ? Color(0xFF0070C2)
-                          : Color(0xFF252525)),                label: "Messages",
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset('assets/icons/account.svg',
-                      color: _currentIndex == 3
-                          ? Color(0xFF0070C2)
-                          : Color(0xFF252525)),                label: "Account",
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset('assets/icons/help.svg',
-                      color: _currentIndex == 4
-                          ? Color(0xFF0070C2)
-                          : Color(0xFF252525)),                label: "Help",
-                ),
-              ],
-            ),
+        bottomNavigationBar: Hero(
+          tag: "NavigationBar",
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Color(0xFF0070C2),
+            unselectedItemColor: Color(0xFF252525),
+            currentIndex: _currentIndex,
+            showUnselectedLabels: true,
+            onTap: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/home.svg',
+                  color: _currentIndex == 0
+                      ? Color(0xFF0070C2)
+                      : Color(0xFF252525),
+                  width: 20,
+                  height: 20,),
+                label: "Home",
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/work.svg',
+                  color: _currentIndex == 1
+                      ? Color(0xFF0070C2)
+                      : Color(0xFF252525),
+                  width: 20,
+                  height: 20,),
+                label: "Projects",
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/chat.svg',
+                  color: _currentIndex == 2
+                      ? Color(0xFF0070C2)
+                      : Color(0xFF252525),
+                  width: 20,
+                  height: 20,),
+                label: "Messages",
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/account.svg',
+                  color: _currentIndex == 3
+                      ? Color(0xFF0070C2)
+                      : Color(0xFF252525),
+                  width: 20,
+                  height: 20,),
+                label: "Account",
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/help.svg',
+                  color: _currentIndex == 4
+                      ? Color(0xFF0070C2)
+                      : Color(0xFF252525),
+                  width: 20,
+                  height: 20,),
+                label: "Help",
+              ),
+            ],
           ),
         ));
   }

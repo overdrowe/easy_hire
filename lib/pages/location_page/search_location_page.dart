@@ -24,14 +24,15 @@ class _SearchLocationPageState extends State<SearchLocationPage> {
     List<Widget> widgetsList = new List<Widget>();
     result.predictions.forEach((element) {
       widgetsList.add(
-        element.description != _controller.text ?
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            customDivider,
-            locationHistoryItem(text: element.description),
-          ],
-        ) : Container(),
+        element.description != _controller.text
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  customDivider,
+                  locationHistoryItem(text: element.description),
+                ],
+              )
+            : Container(),
       );
     });
     return Container(
@@ -81,15 +82,14 @@ class _SearchLocationPageState extends State<SearchLocationPage> {
   Future<void> getPlacesByQuery(String query) async {
     var googlePlace = GooglePlace("AIzaSyDVutR9u2vx58qSsfCSUc6WFdj8fost4p4");
     String textQuery = query.trim();
-    print(textQuery);
-    try {
-      googlePlace.autocomplete.get(textQuery).then((value) {
-        setState(() {
-          result = value;
+    if (textQuery != "")
+      try {
+        googlePlace.autocomplete.get(textQuery).then((value) {
+          setState(() {
+            result = value;
+          });
         });
-      });
-      // print(result.predictions[0].description);
-    } catch (Exception) {}
+      } catch (Exception) {}
   }
 
   @override
@@ -172,7 +172,7 @@ class _SearchLocationPageState extends State<SearchLocationPage> {
               title: "Next",
               isActive: false,
               onPressed: () {
-                // Navigator.of(context).pop(result != null ? result.predictions[0]);
+                Navigator.of(context).pop(_controller.text.trim());
               },
             ),
           )
