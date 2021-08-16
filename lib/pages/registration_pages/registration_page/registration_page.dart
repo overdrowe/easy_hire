@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'file:///B:/FlutterProjects/easy_hire/lib/pages/main_pages/main_page_personal.dart';
 import 'package:easy_hire/pages/location_page/location_page.dart';
+import 'package:easy_hire/pages/main_pages/main_page_personal.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
@@ -18,6 +18,8 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+
+  final ImagePicker _imagePicker = ImagePicker();
   bool passUnVisible = true;
   bool confirmPassUnVisible = true;
 
@@ -57,18 +59,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
   }
 
   _imgFromCamera() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.front);
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.front);
+    if (pickedFile != null)
       setState(() {
-        file = image;
+        file = File(pickedFile.path);
       });
   }
 
   _imgFromGallery() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.gallery);
+    if (pickedFile != null)
       setState(() {
-        file = image;
+        file = File(pickedFile.path);
       });
   }
 

@@ -15,6 +15,8 @@ class AddFilesPage extends StatefulWidget {
 }
 
 class _AddFilesPageState extends State<AddFilesPage> {
+  final ImagePicker _imagePicker = ImagePicker();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +92,7 @@ class _AddFilesPageState extends State<AddFilesPage> {
   }
 
   get getImageList {
-    List<Widget> widgetsList = new List<Widget>();
+    List<Widget> widgetsList = [];
     files.forEach((element) {
       widgetsList.add(
         Stack(
@@ -134,22 +136,21 @@ class _AddFilesPageState extends State<AddFilesPage> {
     return widgetsList;
   }
 
-  List<File> files = new List<File>();
+  List<File> files = [];
 
   _imgFromCamera() async {
-    File image =
-        (await ImagePicker().getImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear)) as File;
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
+    if (pickedFile != null)
       setState(() {
-        files.add(image);
+        files.add(File(pickedFile.path));
       });
   }
 
   _imgFromGallery() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.gallery);
+    if (pickedFile != null)
       setState(() {
-        files.add(image);
+        files.add(File(pickedFile.path));
       });
   }
 

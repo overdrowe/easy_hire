@@ -1,4 +1,4 @@
-import 'file:///B:/FlutterProjects/easy_hire/lib/pages/started_page/started_page.dart';
+import 'package:easy_hire/pages/started_page/started_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: FlatButton(
+      leading: TextButton(
         child: Icon(
           Icons.arrow_back_ios_outlined,
           color: Color(0xFF252525),

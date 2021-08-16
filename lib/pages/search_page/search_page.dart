@@ -1,7 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:easy_hire/widgets/SearchTextField.dart';
+import 'package:easy_hire/widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 class SearchPage extends StatefulWidget {

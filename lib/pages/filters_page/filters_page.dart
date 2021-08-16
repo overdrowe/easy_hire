@@ -23,7 +23,7 @@ class _FiltersPageState extends State<FiltersPage> {
   get defaultFilter {
     return Padding(
       padding: EdgeInsets.only(top: 16),
-      child: FlatButton(
+      child: TextButton(
         onPressed: () {},
         child: Text("return the default filter",
             style: GoogleFonts.montserrat(
@@ -72,7 +72,7 @@ class _FiltersPageState extends State<FiltersPage> {
   }
 
   List<Widget> selectedCategories() {
-    List<Widget> widgetsList = new List<Widget>();
+    List<Widget> widgetsList = [];
     categories.forEach((key, value) {
       if (value) {
         widgetsList.add(Container(

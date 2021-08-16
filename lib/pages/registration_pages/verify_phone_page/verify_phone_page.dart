@@ -1,13 +1,11 @@
 import 'package:easy_hire/app_style/app_style.dart';
-import 'file:///B:/FlutterProjects/easy_hire/lib/pages/registration_pages/account_type_selection_page/account_type_selection_page.dart';
+import 'package:easy_hire/pages/registration_pages/account_type_selection_page/account_type_selection_page.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pin_put/pin_put.dart';
-
-import '../registration_page/registration_page.dart';
 
 class VerifyPhonePage extends StatefulWidget {
   final String phoneNumber;
@@ -102,7 +100,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                       color: Color(0xFFB6B7B8),
                     ),
                   ),
-                  FlatButton(
+                  TextButton(
                     child: Text(
                       "Request again",
                       style: GoogleFonts.montserrat(

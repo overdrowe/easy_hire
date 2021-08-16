@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:ui';
 import 'package:easy_hire/models/slide.dart';
 import 'package:easy_hire/widgets/custom_button.dart';

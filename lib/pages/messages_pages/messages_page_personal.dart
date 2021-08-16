@@ -71,7 +71,7 @@ class _MessagesPagePersonalState extends State<MessagesPagePersonal> {
   }
 
   Widget dialogsList({Project project, List<MsgDialog> dialogsList}) {
-    List<Widget> widgetsList = new List();
+    List<Widget> widgetsList = [];
     widgetsList.add(getProjectTitle(project));
 
     dialogsList.forEach((element) {
@@ -105,7 +105,7 @@ class _MessagesPagePersonalState extends State<MessagesPagePersonal> {
   }
 
   get projectDialogsList {
-    List<Widget> widgetsList = new List();
+    List<Widget> widgetsList = [];
     AccountData().projectsList.forEach((element) {
       widgetsList.add(dialogsList(
           project: element, dialogsList: AccountData().dialogsList));

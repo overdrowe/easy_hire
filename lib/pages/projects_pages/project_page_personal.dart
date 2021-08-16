@@ -57,7 +57,7 @@ class ProjectPagePersonal extends StatelessWidget {
   }
 
   get responses {
-    List<Widget> projectsList = new List();
+    List<Widget> projectsList = [];
     projectsList.add(latestProjectTitle);
     projectsList.addAll([
       reviewItem(AccountData().reviewsList[0]),

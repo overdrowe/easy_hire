@@ -1,6 +1,6 @@
 import 'package:easy_hire/custom_clippers/my_clipper.dart';
-import 'file:///B:/FlutterProjects/easy_hire/lib/pages/handyman_service_page/handyman_service_page.dart';
-import 'file:///B:/FlutterProjects/easy_hire/lib/pages/project_creation_page/project_creation_page.dart';
+import 'package:easy_hire/pages/handyman_service_page/handyman_service_page.dart';
+import 'package:easy_hire/pages/project_creation_page/project_creation_page.dart';
 import 'package:easy_hire/singleton/account_data.dart';
 import 'package:easy_hire/widgets/ripple_widget.dart';
 import 'package:flutter/material.dart';
@@ -196,7 +196,7 @@ class _HomePagePersonalState extends State<HomePagePersonal> {
   get handymanServicesField {
     return GridView.count(
       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 15),
-      crossAxisCount: (MediaQuery.of(context).size.width / 170).toInt(),
+      crossAxisCount: (MediaQuery.of(context).size.width ~/ 170).toInt(),
       crossAxisSpacing: 19,
       mainAxisSpacing: 19,
       physics: NeverScrollableScrollPhysics(),
@@ -239,7 +239,7 @@ class _HomePagePersonalState extends State<HomePagePersonal> {
   get clearingServicesField {
     return GridView.count(
       padding: EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 15),
-      crossAxisCount: (MediaQuery.of(context).size.width / 170).toInt(),
+      crossAxisCount: (MediaQuery.of(context).size.width ~/ 170).toInt(),
       crossAxisSpacing: 19,
       mainAxisSpacing: 19,
       physics: NeverScrollableScrollPhysics(),

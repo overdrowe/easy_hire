@@ -13,6 +13,8 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
+  final ImagePicker _imagePicker = ImagePicker();
+
   bool passwordVisible = false;
   File file = AccountData().avatarImageFile;
 
@@ -102,18 +104,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   _imgFromCamera() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.front);
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.front);
+    if (pickedFile != null)
       setState(() {
-        file = image;
+        file = File(pickedFile.path);
       });
   }
 
   _imgFromGallery() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.gallery);
+    if (pickedFile != null)
       setState(() {
-        file = image;
+        file = File(pickedFile.path);
       });
   }
 

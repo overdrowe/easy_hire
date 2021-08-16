@@ -28,7 +28,10 @@ class _ProjectCreationPageState extends State<ProjectCreationPage> {
   String descriptionText = "";
   DateTime selectedDate = DateTime.now();
 
-  AddressPanel _addressPanel = AddressPanel(addressName: "Add address");
+  AddressPanel _addressPanel = AddressPanel(
+    addressName: "Add address",
+    onChanged: null,
+  );
 
   _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(

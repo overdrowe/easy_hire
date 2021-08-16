@@ -51,7 +51,7 @@ class _UserPageBusinessState extends State<UserPageBusiness> {
   }
 
   get latestProjects {
-    List<Widget> projectsList = new List();
+    List<Widget> projectsList = [];
     projectsList.add(latestProjectTitle);
     projectsList.addAll([
       AccountData()
@@ -66,21 +66,13 @@ class _UserPageBusinessState extends State<UserPageBusiness> {
   }
 
   get reviews {
-    List<Widget> widgetsList = new List();
+    List<Widget> widgetsList = [];
     widgetsList.addAll([
       AccountData().reviewsList[0].getReviewWidget(),
       AccountData().reviewsList[1].getReviewWidget()
     ]);
     return Column(children: widgetsList);
   }
-
-  // get title {
-  //   return Text(
-  //     "",
-  //     style: GoogleFonts.montserrat(
-  //         fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF252525)),
-  //   );
-  // }
 
   get backArrow {
     return FlatButton(

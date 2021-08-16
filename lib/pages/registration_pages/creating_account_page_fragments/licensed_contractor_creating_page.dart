@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'file:///B:/FlutterProjects/easy_hire/lib/pages/main_pages/main_page_business.dart';
+import 'package:easy_hire/pages/main_pages/main_page_business.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:easy_hire/widgets/custom_check_box.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';
@@ -15,9 +15,9 @@ class LicensedContractorCreatingPage extends StatefulWidget {
       _LicensedContractorCreatingPageState();
 }
 
-class _LicensedContractorCreatingPageState
-    extends State<LicensedContractorCreatingPage> {
-  List<File> files = new List<File>();
+class _LicensedContractorCreatingPageState extends State<LicensedContractorCreatingPage> {
+  final ImagePicker _imagePicker = ImagePicker();
+  List<File> files = [];
 
   @override
   Widget build(BuildContext context) {
@@ -68,18 +68,18 @@ class _LicensedContractorCreatingPageState
   }
 
   _imgFromCamera() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
+    if (pickedFile != null)
       setState(() {
-        files.add(image);
+        files.add(File(pickedFile.path));
       });
   }
 
   _imgFromGallery() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.gallery);
+    if (pickedFile != null)
       setState(() {
-        files.add(image);
+        files.add(File(pickedFile.path));
       });
   }
 
@@ -173,7 +173,7 @@ class _LicensedContractorCreatingPageState
   }
 
   get getImageList {
-    List<Widget> widgetsList = new List<Widget>();
+    List<Widget> widgetsList = [];
     files.forEach((element) {
       widgetsList.add(
         Container(

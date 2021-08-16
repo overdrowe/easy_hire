@@ -6,7 +6,7 @@ import '../project_page_business.dart';
 
 class ProjectsListPageBusiness extends StatelessWidget {
   getProjects(BuildContext context) {
-    List<Widget> widgetList = new List();
+    List<Widget> widgetList = [];
 
     for (var value in AccountData().projectsList) {
       widgetList.add(value.getProjectItem(onTap: () {

@@ -21,7 +21,7 @@ class _SearchLocationPageState extends State<SearchLocationPage> {
   }
 
   Widget get suggestedLocationOptions {
-    List<Widget> widgetsList = new List<Widget>();
+    List<Widget> widgetsList = [];
     result.predictions.forEach((element) {
       widgetsList.add(
         element.description != _controller.text

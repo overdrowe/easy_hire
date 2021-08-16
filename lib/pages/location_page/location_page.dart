@@ -13,7 +13,10 @@ class LocationPage extends StatefulWidget {
 
 class _LocationPageState extends State<LocationPage> {
 
-  AddressPanel _addressPanel = AddressPanel(addressName: "Address");
+  AddressPanel _addressPanel = AddressPanel(
+    addressName: "Address",
+    onChanged: null,
+  );
 
   @override
   Widget build(BuildContext context) {

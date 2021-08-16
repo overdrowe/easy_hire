@@ -105,8 +105,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: FlatButton(
-          child: Icon(
+        leading: IconButton(
+          icon: Icon(
             Icons.arrow_back_ios_outlined,
             color: Color(0xFF252525),
           ),

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:easy_hire/app_style/app_style.dart';
-import 'file:///B:/FlutterProjects/easy_hire/lib/pages/main_pages/main_page_business.dart';
+import 'package:easy_hire/pages/main_pages/main_page_business.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:easy_hire/widgets/custom_check_box.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';
@@ -16,9 +16,11 @@ class HandymanCreatingPage extends StatefulWidget {
 }
 
 class _HandymanPagePageState extends State<HandymanCreatingPage> {
+  final ImagePicker _imagePicker = ImagePicker();
+
   bool checkBoxValue = true;
   bool confirmCheckBoxValue = false;
-  List<File> files = new List<File>();
+  List<File> files = [];
 
   @override
   Widget build(BuildContext context) {
@@ -82,18 +84,18 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
   }
 
   _imgFromCamera() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.camera, preferredCameraDevice: CameraDevice.rear);
+    if (pickedFile != null)
       setState(() {
-        files.add(image);
+        files.add(File(pickedFile.path));
       });
   }
 
   _imgFromGallery() async {
-    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    if (image != null)
+    PickedFile pickedFile = await _imagePicker.getImage(source: ImageSource.gallery);
+    if (pickedFile != null)
       setState(() {
-        files.add(image);
+        files.add(File(pickedFile.path));
       });
   }
 
@@ -193,7 +195,7 @@ class _HandymanPagePageState extends State<HandymanCreatingPage> {
   }
 
   get getImageList {
-    List<Widget> widgetsList = new List<Widget>();
+    List<Widget> widgetsList = [];
     files.forEach((element) {
       widgetsList.add(
         Container(
