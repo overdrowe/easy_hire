@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1037713287858",
+    "project_id": "easyhire-647b6",
+    "storage_bucket": "easyhire-647b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037713287858:android:4fa3ca9feaa0b12951f7ab",
+        "android_client_info": {
+          "package_name": "com.example.easy_hire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037713287858-bkvirh1snvapmnqg0vgohgqfgmcjb77u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPHdjMp6JunkcOszAOifUUpEBCfHaZPDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037713287858-bkvirh1snvapmnqg0vgohgqfgmcjb77u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:easy_hire/pages/location_page/location_page.dart';
 import 'package:easy_hire/pages/main_pages/main_page_personal.dart';
-import 'package:easy_hire/singleton/account_data.dart';
+import 'package:easy_hire/services/account_data.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:easy_hire/widgets/custom_text_field.dart';

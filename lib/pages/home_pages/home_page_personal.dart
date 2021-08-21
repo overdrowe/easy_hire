@@ -1,7 +1,7 @@
 import 'package:easy_hire/custom_clippers/my_clipper.dart';
 import 'package:easy_hire/pages/handyman_service_page/handyman_service_page.dart';
 import 'package:easy_hire/pages/project_creation_page/project_creation_page.dart';
-import 'package:easy_hire/singleton/account_data.dart';
+import 'package:easy_hire/services/account_data.dart';
 import 'package:easy_hire/widgets/ripple_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

@@ -1,6 +1,6 @@
 import 'package:easy_hire/models/msg_dialog.dart';
 import 'package:easy_hire/pages/user_pages/user_page_personal.dart';
-import 'package:easy_hire/singleton/account_data.dart';
+import 'package:easy_hire/services/account_data.dart';
 import 'package:easy_hire/widgets/message_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

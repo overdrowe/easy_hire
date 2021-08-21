@@ -1,4 +1,4 @@
-import 'package:easy_hire/singleton/account_data.dart';
+import 'package:easy_hire/services/account_data.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 

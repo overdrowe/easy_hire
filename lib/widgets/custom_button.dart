@@ -26,8 +26,11 @@ class CustomButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(6),
       ),
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      color: isActive ? AppStyle().mainColor : Color(0xFFB6B7B8),
-      onPressed: onPressed,
+      color: AppStyle().mainColor,
+      disabledColor: Color(0xFFB6B7B8),
+      onPressed: isActive
+        ? onPressed
+        : null,
     );
   }
 }

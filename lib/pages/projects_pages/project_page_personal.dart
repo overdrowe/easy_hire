@@ -1,7 +1,7 @@
 import 'package:easy_hire/app_style/app_style.dart';
 import 'package:easy_hire/models/project.dart';
 import 'package:easy_hire/models/review.dart';
-import 'package:easy_hire/singleton/account_data.dart';
+import 'package:easy_hire/services/account_data.dart';
 import 'package:easy_hire/widgets/action_buttons_block.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

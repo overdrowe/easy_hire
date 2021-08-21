@@ -2,7 +2,7 @@ import 'package:easy_hire/models/msg_dialog.dart';
 import 'package:easy_hire/models/project.dart';
 import 'package:easy_hire/pages/dialog_pages/dialog_page_personal.dart';
 import 'package:easy_hire/pages/projects_pages/project_page_personal.dart';
-import 'package:easy_hire/singleton/account_data.dart';
+import 'package:easy_hire/services/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

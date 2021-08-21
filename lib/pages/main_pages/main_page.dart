@@ -1,5 +1,5 @@
 
-import 'package:easy_hire/singleton/account_data.dart';
+import 'package:easy_hire/services/account_data.dart';
 import 'package:flutter/material.dart';
 
 import 'main_page_business.dart';

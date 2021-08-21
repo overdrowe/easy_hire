@@ -2,7 +2,7 @@ import 'package:easy_hire/app_style/app_style.dart';
 import 'package:easy_hire/pages/edit_profile_page/edit_profile_page.dart';
 import 'package:easy_hire/pages/enter_password_pages/enter_current_password_page.dart';
 import 'package:easy_hire/pages/main_pages/main_page_personal.dart';
-import 'package:easy_hire/singleton/account_data.dart';
+import 'package:easy_hire/services/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';

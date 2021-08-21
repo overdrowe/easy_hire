@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:easy_hire/pages/filters_page/filters_page.dart';
 import 'package:easy_hire/pages/sort_page/sort_page.dart';
-import 'package:easy_hire/singleton/account_data.dart';
+import 'package:easy_hire/services/account_data.dart';
 import 'package:easy_hire/widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
