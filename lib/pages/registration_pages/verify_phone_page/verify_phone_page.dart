@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:easy_hire/app_style/app_style.dart';
-import 'package:easy_hire/pages/registration_pages/account_type_selection_page/account_type_selection_page.dart';
 import 'package:easy_hire/widgets/custom_app_bar.dart';
 import 'package:easy_hire/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';

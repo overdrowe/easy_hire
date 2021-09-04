@@ -19,10 +19,12 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
 
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
   final ImagePicker _imagePicker = ImagePicker();
+
   bool passUnVisible = true;
   bool confirmPassUnVisible = true;
-
   File file;
 
   @override
@@ -115,8 +117,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   get avatar {
     return Container(
-      decoration:
-          BoxDecoration(color: Color(0xFFF4F4F4), shape: BoxShape.circle),
+      decoration: BoxDecoration(color: Color(0xFFF4F4F4), shape: BoxShape.circle),
       child: Center(
         child: Stack(
           children: [
@@ -173,8 +174,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
           ),
         ),
         SizedBox(height: 12),
-        CustomTextField(hintText: "First name"),
-        CustomTextField(hintText: "Last name"),
+        CustomTextField(hintText: "First name", controller: _nameController,),
+        CustomTextField(hintText: "Last name", controller: _lastNameController,),
       ],
     );
   }

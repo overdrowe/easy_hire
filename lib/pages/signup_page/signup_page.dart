@@ -61,10 +61,13 @@ class _SignUpPageState extends State<SignUpPage> {
                     children: [
                       TextField(
                         controller: _phoneController,
+                        maxLength: 10,
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.grey[200],
                           hintText: "Phone number",
+                          prefixText: '+7',
+                          counterText: '',
                           contentPadding: EdgeInsets.all(15),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
@@ -75,7 +78,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             borderRadius: BorderRadius.circular(5),
                           ),
                         ),
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.phone,
                         onChanged: (String value) {
                           setState(() {});
                         },
@@ -84,9 +87,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         height: 32,
                       ),
                       CustomButton(
-                        isActive: _phoneController.text.isNotEmpty,
+                        isActive: _phoneController.text.length >= 10,
                         title: 'Sign Up',
-                        onPressed: () => _loginUser(_phoneController.text, context),
+                        onPressed: () => _loginUser(('+7' + _phoneController.text), context),
                       ),
                       SizedBox(
                         height: 16,
@@ -172,7 +175,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Future<void> _loginUser(String phone, BuildContext context) async {
     await Firebase.initializeApp();
     FirebaseAuth _auth = FirebaseAuth.instance;
-    phone = '+79870413362';
+    // phone = '+79870413369';
 
     _auth.verifyPhoneNumber(
         phoneNumber: phone,
