@@ -17,7 +17,7 @@ class AcceptableAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: FlatButton(
+      leading: TextButton(
         child: Icon(
           Icons.arrow_back_ios,
           color: Color(0xFF252525),

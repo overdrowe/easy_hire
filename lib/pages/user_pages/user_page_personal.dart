@@ -76,8 +76,8 @@ class _UserPagePersonalState extends State<UserPagePersonal> {
   }
 
   get backArrow {
-    return FlatButton(
-      shape: CircleBorder(),
+    return TextButton(
+      style: TextButton.styleFrom(shape: CircleBorder()),
       child: Icon(
         Icons.arrow_back_ios,
         color: Color(0xFF252525),

@@ -82,10 +82,7 @@ class _StartedPageState extends State<StartedPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               for (int i = 0; i < slideList.length; i++)
-                                if (i == _currentPage)
-                                  SlideDots(true)
-                                else
-                                  SlideDots(false)
+                                if (i == _currentPage) SlideDots(true) else SlideDots(false)
                             ],
                           ),
                         )
@@ -103,15 +100,14 @@ class _StartedPageState extends State<StartedPage> {
                   CustomButton(
                     title: 'Log In',
                     isActive: true,
-                    onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LogInPage()));
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogInPage()));
                     },
                   ),
                   SizedBox(
                     height: 8,
                   ),
-                  FlatButton(
+                  TextButton(
                     child: Text(
                       'Sign Up',
                       style: GoogleFonts.montserrat(
@@ -121,16 +117,12 @@ class _StartedPageState extends State<StartedPage> {
                         letterSpacing: -0.41,
                       ),
                     ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                          color: Colors.white,
-                          width: 2,
-                          style: BorderStyle.solid),
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      shape: RoundedRectangleBorder(side: BorderSide(color: Colors.white, width: 2, style: BorderStyle.solid)),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignUpPage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
                     },
                   ),
                 ],

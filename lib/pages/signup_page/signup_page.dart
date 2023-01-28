@@ -13,7 +13,6 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
   final _phoneController = TextEditingController();
 
   @override
@@ -100,12 +99,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            buttonWithLeadingLogo('assets/images/apple_logo.png',
-                                'Log In with Apple', Color(0xFF252525)),
-                            buttonWithLeadingLogo('assets/images/google_logo.png',
-                                'Log In with Google', Color(0xFF252525)),
-                            buttonWithLeadingLogo('assets/images/facebook_logo.png',
-                                'Log In with Facebook', Color(0xFF537BE1)),
+                            buttonWithLeadingLogo('assets/images/apple_logo.png', 'Log In with Apple', Color(0xFF252525)),
+                            buttonWithLeadingLogo('assets/images/google_logo.png', 'Log In with Google', Color(0xFF252525)),
+                            buttonWithLeadingLogo('assets/images/facebook_logo.png', 'Log In with Facebook', Color(0xFF537BE1)),
                           ],
                         ),
                       )
@@ -121,8 +117,13 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Widget buttonWithLeadingLogo(String imgLink, String title, Color color) {
-    return FlatButton(
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28.50)),
+      backgroundColor: color,
+    );
+    return TextButton(
+      style: flatButtonStyle,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -133,10 +134,6 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ],
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(28.50),
-      ),
-      color: color,
       onPressed: () {},
     );
   }
@@ -173,7 +170,6 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Future<void> _loginUser(String phone, BuildContext context) async {
-    await Firebase.initializeApp();
     FirebaseAuth _auth = FirebaseAuth.instance;
     // phone = '+79870413369';
 
@@ -183,7 +179,7 @@ class _SignUpPageState extends State<SignUpPage> {
         verificationCompleted: (AuthCredential credential) async {
           Navigator.of(context).pop();
         },
-        verificationFailed: (Exception exception){
+        verificationFailed: (Exception exception) {
           print('sorry something went wrong!');
           CustomDialogAlert().showAlert(
             context: context,
@@ -198,8 +194,7 @@ class _SignUpPageState extends State<SignUpPage> {
               builder: (context) => VerifyPhonePage(
                 phoneNumber: phone,
                 onTap: (String code) async {
-                  AuthCredential credential =
-                  PhoneAuthProvider.credential(verificationId: verificationId, smsCode: code.trim());
+                  AuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: code.trim());
                   try {
                     await _auth.signInWithCredential(credential);
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AccountTypeSelectionPage()));
@@ -215,8 +210,6 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           );
         },
-        codeAutoRetrievalTimeout: null
-    );
+        codeAutoRetrievalTimeout: null);
   }
-
 }

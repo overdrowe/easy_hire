@@ -5,8 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ActionButtonsBlock extends StatefulWidget {
   final Color secondColor;
 
-  const ActionButtonsBlock({Key key, this.secondColor = Colors.white})
-      : super(key: key);
+  const ActionButtonsBlock({Key key, this.secondColor = Colors.white}) : super(key: key);
 
   @override
   _ActionButtonsBlockState createState() => _ActionButtonsBlockState();
@@ -48,9 +47,7 @@ class _ActionButtonsBlockState extends State<ActionButtonsBlock> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.montserrat(
                   fontSize: 13,
-                  color: color == AppStyle().mainColor
-                      ? Colors.white
-                      : Color(0xFF252525),
+                  color: color == AppStyle().mainColor ? Colors.white : Color(0xFF252525),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -63,12 +60,8 @@ class _ActionButtonsBlockState extends State<ActionButtonsBlock> {
 
   get myPopMenu {
     return PopupMenuButton(
-        onSelected: (value) {
-          Scaffold.of(context).showSnackBar(SnackBar(
-            content:
-                value == 1 ? Text("The user is blocked") : Text("Report sent"),
-          ));
-        },
+        onSelected: (value) =>
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: value == 1 ? Text("The user is blocked") : Text("Report sent"))),
         itemBuilder: (context) => [
               PopupMenuItem(
                   value: 1,

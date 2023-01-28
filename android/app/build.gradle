@@ -27,25 +27,28 @@ apply plugin: 'com.google.gms.google-services'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+    lintOptions {
+        disable 'InvalidPackage'
+        checkReleaseBuilds false
     }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.easy_hire"
-        minSdkVersion 21
-        targetSdkVersion 30
+        applicationId "ru.gosuslugi.culture"
+        minSdkVersion 23
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
             signingConfig signingConfigs.debug
         }
     }

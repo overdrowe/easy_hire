@@ -42,10 +42,7 @@ class _UserPageBusinessState extends State<UserPageBusiness> {
         "Latest Project",
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: GoogleFonts.montserrat(
-            fontSize: 19,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF252525)),
+        style: GoogleFonts.montserrat(fontSize: 19, fontWeight: FontWeight.bold, color: Color(0xFF252525)),
       ),
     );
   }
@@ -54,29 +51,21 @@ class _UserPageBusinessState extends State<UserPageBusiness> {
     List<Widget> projectsList = [];
     projectsList.add(latestProjectTitle);
     projectsList.addAll([
-      AccountData()
-          .projectsList[1]
-          .getProjectItem(automaticallyImplyDivider: false),
-      AccountData()
-          .projectsList[1]
-          .getProjectItem(automaticallyImplyDivider: false),
+      AccountData().projectsList[1].getProjectItem(automaticallyImplyDivider: false),
+      AccountData().projectsList[1].getProjectItem(automaticallyImplyDivider: false),
     ]);
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch, children: projectsList);
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: projectsList);
   }
 
   get reviews {
     List<Widget> widgetsList = [];
-    widgetsList.addAll([
-      AccountData().reviewsList[0].getReviewWidget(),
-      AccountData().reviewsList[1].getReviewWidget()
-    ]);
+    widgetsList.addAll([AccountData().reviewsList[0].getReviewWidget(), AccountData().reviewsList[1].getReviewWidget()]);
     return Column(children: widgetsList);
   }
 
   get backArrow {
-    return FlatButton(
-      shape: CircleBorder(),
+    return TextButton(
+      style: TextButton.styleFrom(shape: CircleBorder()),
       child: Icon(
         Icons.arrow_back_ios_outlined,
         color: Color(0xFF252525),
@@ -94,10 +83,7 @@ class _UserPageBusinessState extends State<UserPageBusiness> {
         children: [
           Text(
             "Reviews",
-            style: GoogleFonts.montserrat(
-                fontSize: 19,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF252525)),
+            style: GoogleFonts.montserrat(fontSize: 19, fontWeight: FontWeight.bold, color: Color(0xFF252525)),
           ),
           SizedBox(width: 8),
           SvgPicture.asset(
@@ -108,8 +94,7 @@ class _UserPageBusinessState extends State<UserPageBusiness> {
           SizedBox(width: 4),
           Text(
             "72",
-            style:
-                GoogleFonts.montserrat(fontSize: 13, color: AppStyle().mainColor),
+            style: GoogleFonts.montserrat(fontSize: 13, color: AppStyle().mainColor),
           ),
           SizedBox(width: 8),
           SvgPicture.asset(
@@ -120,8 +105,7 @@ class _UserPageBusinessState extends State<UserPageBusiness> {
           SizedBox(width: 4),
           Text(
             "3",
-            style:
-                GoogleFonts.montserrat(fontSize: 13, color: Color(0xFF252525)),
+            style: GoogleFonts.montserrat(fontSize: 13, color: Color(0xFF252525)),
           ),
           Expanded(child: SizedBox()),
           InkWell(
@@ -225,8 +209,7 @@ class _UserPageBusinessState extends State<UserPageBusiness> {
           child: SvgPicture.asset('assets/icons/msg.svg'),
         ),
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => DialogPageBusiness()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => DialogPageBusiness()));
         },
       ),
     );

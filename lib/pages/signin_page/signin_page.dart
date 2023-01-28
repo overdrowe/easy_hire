@@ -87,7 +87,7 @@ class _LogInPageState extends State<LogInPage> {
                   ),
                   CustomButton(
                     title: 'Log In',
-                    isActive: false,
+                    isActive: true,
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MainPage()));
@@ -121,8 +121,13 @@ class _LogInPageState extends State<LogInPage> {
   }
 
   Widget buttonWithLeadingLogo(String imgLink, String title, Color color) {
-    return FlatButton(
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28.50)),
+      backgroundColor: color,
+    );
+    return TextButton(
+      style: flatButtonStyle,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -146,10 +151,6 @@ class _LogInPageState extends State<LogInPage> {
           )*/
         ],
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(28.50),
-      ),
-      color: color,
       onPressed: () {},
     );
   }

@@ -210,7 +210,7 @@ class _SortPageState extends State<SortPage> {
   get defaultFilter {
     return Padding(
       padding: EdgeInsets.only(top: 16),
-      child: FlatButton(
+      child: TextButton(
         onPressed: () {},
         child: Text("return the default filter",
             style: GoogleFonts.montserrat(

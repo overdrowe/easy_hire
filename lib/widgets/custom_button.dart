@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatelessWidget {
-
   final String title;
   final VoidCallback onPressed;
   final bool isActive;
@@ -12,7 +11,16 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(6),
+      ),
+      backgroundColor: AppStyle().mainColor,
+      disabledBackgroundColor: Color(0xFFB6B7B8),
+    );
+    return TextButton(
+      style: flatButtonStyle,
       child: Text(
         title,
         style: GoogleFonts.montserrat(
@@ -22,15 +30,7 @@ class CustomButton extends StatelessWidget {
           letterSpacing: -0.41,
         ),
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(6),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      color: AppStyle().mainColor,
-      disabledColor: Color(0xFFB6B7B8),
-      onPressed: isActive
-        ? onPressed
-        : null,
+      onPressed: isActive ? onPressed : null,
     );
   }
 }
